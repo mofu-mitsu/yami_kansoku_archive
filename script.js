@@ -1,8 +1,8 @@
 /* 
-  深層心理・闇観測実験アーカイブ Logic (Ver.7.0 Ultimate)
+  深層心理・闇観測実験アーカイブ Logic (Ver.10.0 Ultimate Final)
 */
 
-// パラメーター
+// パラメーター（全16種）
 const paramNames = {
     mood: "情緒不安定",
     structure: "構造理解",
@@ -17,11 +17,20 @@ const paramNames = {
     empathy: "共感・同調",
     ideal: "理想・ロマン",
     aggression: "攻撃性",
-    trauma: "過去の傷",   // New: のりおみ・かるめ判定用
-    boredom: "退屈・倦怠", // New: ありす・かいこく判定用
-    skepticism: "懐疑心"   // New: 健全な疑い（みづき用）
+    trauma: "過去の傷",
+    boredom: "退屈・倦怠",
+    skepticism: "懐疑心",
+    creativity: "創造・表現",
+    control: "統制・支配",
+    pride: "プライド・誇り",
+    self_doubt: "自己懐疑(二重否定)", // ★NEW!
+    social_phobia: "対人緊張(コミュ障)", // ★NEW! (みづき、あめり等)
+    fe_interface: "擬態社交(Feツール)" ,  // ★NEW! (あい、きよみ、ありす等)
+    cleanliness: "潔癖・衛生",      // ★NEW! (じゅん、なお)
+    lie_hate: "虚偽嫌悪",           // ★NEW! (こふく、かるめ)
+    deception: "欺瞞・偽悪",        // ★NEW! (まい、すおう)
+    misanthropy: "人間嫌い"         // ★NEW! (みたろう、れお、まり)
 };
-
 
 let stats = {};
 for(let k in paramNames) stats[k] = 0;
@@ -29,8 +38,8 @@ for(let k in paramNames) stats[k] = 0;
 let currentQuestions = [];
 let currentQIndex = 0;
 let startTime = 0;
-// 履歴管理用（戻るボタンのため）
 let historyLog = [];
+let previousScreen = 'start-screen'; // 画面遷移管理用
 
 function shuffle(array) {
     const newArray = [...array];
@@ -41,8 +50,6 @@ function shuffle(array) {
     return newArray;
 }
 
-// ■ 動的アート生成 (Canvas版)
-// CSSではなくJSでピクセルを描画するから絶対に出る！
 function generateAbstractArt(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -79,7 +86,7 @@ function generateAbstractArt(containerId) {
             ctx.stroke();
         }
     } else {
-        // 深淵系（円）
+        // 深淵系
         for(let i=0; i<10; i++) {
             ctx.beginPath();
             ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, Math.random()*50, 0, Math.PI*2);
@@ -114,7 +121,6 @@ function showQuestion() {
     inputArea.innerHTML = '';
     const imgArea = document.getElementById('image-area');
     
-    // 画像生成
     if (q.type === 'image') {
         imgArea.classList.remove('hidden');
         setTimeout(() => generateAbstractArt('image-area'), 10);
@@ -123,12 +129,10 @@ function showQuestion() {
         imgArea.innerHTML = '';
     }
 
-    // プログレスバー & 戻るボタン制御
     document.getElementById('progress-fill').style.width = `${(currentQIndex / currentQuestions.length) * 100}%`;
     document.getElementById('back-btn').disabled = (currentQIndex === 0);
 
-    // 選択肢表示
-    let options = q.options ? shuffle(q.options) : [];
+    let options = q.options ? shuffle(q.options) :[];
 
     if (q.type === 'select' || q.type === 'image') {
         options.forEach(opt => {
@@ -142,6 +146,7 @@ function showQuestion() {
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'text-input';
+        input.placeholder = 'ここに入力...';
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.innerText = '送信';
@@ -174,6 +179,32 @@ function showQuestion() {
         };
         inputArea.appendChild(container);
         inputArea.appendChild(btn);
+    } 
+    // ★新規：スライダー形式のUI生成
+    else if (q.type === 'slider') {
+        const container = document.createElement('div');
+        container.className = 'slider-container';
+        
+        container.innerHTML = `
+            <div class="slider-labels">
+                <span>${q.labels[0]}</span>
+                <span>${q.labels[1]}</span>
+            </div>
+            <input type="range" id="slider-input" min="0" max="100" value="50">
+        `;
+        
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.innerText = '決定';
+        btn.style.marginTop = '20px';
+        btn.onclick = () => {
+            const val = parseInt(document.getElementById('slider-input').value);
+            const scores = q.sliderLogic(val);
+            handleAnswer(scores);
+        };
+        
+        inputArea.appendChild(container);
+        inputArea.appendChild(btn);
     }
 
     startTime = Date.now();
@@ -193,7 +224,6 @@ function handleAnswer(scores) {
     clearInterval(timerInterval);
     const timeTaken = (Date.now() - startTime) / 1000;
 
-    // 時間分析加算
     let timeScores = {};
     if (timeTaken > 6.0) {
         if (scores.structure > 0) timeScores.structure = 1;
@@ -203,14 +233,11 @@ function handleAnswer(scores) {
         if (scores.void > 0) timeScores.interest = -2;
     }
 
-    // 履歴に保存（戻るボタン用）
-    // 今回加算するスコア（選択肢分 + 時間分）を記録しておく
     let addedScores = {...scores};
     for(let k in timeScores) addedScores[k] = (addedScores[k] || 0) + timeScores[k];
     
     historyLog.push(addedScores);
 
-    // スコア加算実行
     for (let key in addedScores) {
         if (stats.hasOwnProperty(key)) stats[key] += addedScores[key];
     }
@@ -219,19 +246,12 @@ function handleAnswer(scores) {
     showQuestion();
 }
 
-// ■ 戻るボタン処理
 function goBack() {
     if (currentQIndex <= 0 || historyLog.length === 0) return;
-
-    // 前回のスコアを減算（取り消し）
     const lastScores = historyLog.pop();
     for (let key in lastScores) {
         if (stats.hasOwnProperty(key)) stats[key] -= lastScores[key];
     }
-
-    // 戻った回数を「迷い」として少しカウントしても面白いかも？
-    // stats.mask += 0.5; // 修正行動＝仮面？
-
     currentQIndex--;
     showQuestion();
 }
@@ -242,7 +262,7 @@ function finishExperiment() {
     setTimeout(() => showResult(), 2000);
 }
 
-let finalResultChar = null; // シェア用に保持
+let finalResultChar = null;
 
 function showResult() {
     document.getElementById('loading-screen').classList.remove('active');
@@ -265,7 +285,6 @@ function showResult() {
     document.getElementById('result-quote').innerText = bestChar.quote;
     document.getElementById('result-desc').innerText = bestChar.desc;
     
-    // 詳細プロフ
     const detailHtml = `
         <div class="profile-box">
             <div class="profile-row"><span class="label">■ Name:</span> ${bestChar.fullname || bestChar.name}</div>
@@ -278,7 +297,6 @@ function showResult() {
     `;
     document.getElementById('match-chara-detail').innerHTML = detailHtml;
 
-    // 画像
     const imgElem = document.getElementById('result-img');
     const placeholder = document.querySelector('.chara-img-placeholder');
     
@@ -291,7 +309,6 @@ function showResult() {
         if(placeholder) placeholder.style.display = 'flex';
     }
 
-    // パラメータ
     const statsContainer = document.getElementById('stats-list');
     statsContainer.innerHTML = '';
     const sortedKeys = Object.keys(stats).sort((a, b) => Math.abs(stats[b]) - Math.abs(stats[a]));
@@ -308,13 +325,7 @@ function showResult() {
     });
 }
 
-/* 
-  深層心理・闇観測実験アーカイブ Logic (Ver.8.0 Ultimate)
-*/
-
-// パラメーター初期化などは前回と同じ
-
-// ■ シェア機能 (Web Share API対応)
+// ■ シェア機能 (汎用)
 function shareResult() {
     if (!finalResultChar) return;
     
@@ -329,80 +340,18 @@ function shareResult() {
             url: url
         }).catch(console.error);
     } else {
-        // PCなどはクリップボードコピーにする？ またはTwitter
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-        window.open(twitterUrl, '_blank');
+        // PCなどで対応していない場合、クリップボードにコピー
+        navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+            alert('結果をクリップボードにコピーしました！');
+        }).catch(err => {
+            console.error('コピー失敗', err);
+        });
     }
 }
 
-
-// ■ アーカイブ詳細モーダル表示
-function showArchiveDetail(char) {
-    // 既存のモーダルがあれば削除
-    const existing = document.getElementById('archive-detail-modal');
-    if(existing) existing.remove();
-
-    const modal = document.createElement('div');
-    modal.id = 'archive-detail-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close-modal" onclick="this.parentElement.parentElement.remove()">×</span>
-            <div class="chara-img-box" style="margin:0 auto 15px;">
-                <img src="${char.image}" onerror="this.style.display='none'">
-            </div>
-            <h3>${char.type_title}</h3>
-            <h2>${char.name}</h2>
-            <div class="quote-box">${char.quote}</div>
-            <div class="profile-box">
-                <div class="profile-row"><span class="label">Name:</span> ${char.fullname}</div>
-                <div class="profile-row"><span class="label">Gender:</span> ${char.gender}</div>
-                <div class="profile-row"><span class="label">Group:</span> ${char.group}</div>
-                <div class="profile-row">
-                    ${char.tags.map(t => `<span class="tag" style="background:#333; padding:2px 5px; margin:2px; font-size:0.8em; display:inline-block;">${t}</span>`).join(' ')}
-                </div>
-            </div>
-            <p style="text-align:left; font-size:0.9rem;">${char.desc}</p>
-        </div>
-    `;
-    
-    // 背景クリックで閉じる
-    modal.onclick = (e) => {
-        if(e.target === modal) modal.remove();
-    };
-    
-    document.body.appendChild(modal);
-}
 // ■ アーカイブ一覧表示
-function showArchive() {
-    document.getElementById('start-screen').classList.remove('active');
-    document.getElementById('result-screen').classList.remove('active');
-    document.getElementById('archive-screen').classList.add('active');
-    
-    const list = document.getElementById('archive-list');
-    list.innerHTML = '';
-    
-    // グループごとに表示してもいいかも？今回は単純リスト
-    characters.forEach(char => {
-        const item = document.createElement('div');
-        item.className = 'archive-item';
-        item.innerHTML = `
-            <div class="archive-icon" style="background-image: url('${char.image}'); background-size: cover;"></div>
-            <div class="archive-info">
-                <h4>${char.name}</h4>
-                <p>${char.type_title}</p>
-            </div>
-        `;
-        // クリックで詳細ポップアップとか出せると良いけど、今回は簡易的に
-        list.appendChild(item);
-    });
-}
-
-let previousScreen = 'start-screen';
-
 function showArchive(fromScreen) {
-    // どっちの画面から来たか記録
     previousScreen = fromScreen;
-    
     document.getElementById('start-screen').classList.remove('active');
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('archive-screen').classList.add('active');
@@ -414,13 +363,13 @@ function showArchive(fromScreen) {
         const item = document.createElement('div');
         item.className = 'archive-item';
         item.innerHTML = `
-            <div class="archive-icon" style="background-image: url('${char.image}'); background-size: cover;"></div>
+            <div class="archive-icon" style="background-image: url('${char.image}'); background-size: cover; background-position: center;"></div>
             <div class="archive-info">
                 <h4>${char.name}</h4>
                 <p>${char.type_title}</p>
             </div>
         `;
-        // クリックで詳細表示
+        // クリックイベントをここで確実にバインド
         item.onclick = () => showArchiveDetail(char);
         list.appendChild(item);
     });
@@ -428,21 +377,21 @@ function showArchive(fromScreen) {
 
 function backFromArchive() {
     document.getElementById('archive-screen').classList.remove('active');
-    // 元の画面に戻る
     document.getElementById(previousScreen).classList.add('active');
 }
 
-// ■ アーカイブ詳細モーダル (JSでDOM生成して表示)
+// ■ アーカイブ詳細モーダル (JS生成)
 function showArchiveDetail(char) {
-    const container = document.getElementById('modal-container');
-    container.innerHTML = ''; // クリア
+    // 既存のモーダル削除
+    const existing = document.getElementById('archive-detail-modal');
+    if(existing) existing.remove();
 
     const modal = document.createElement('div');
     modal.id = 'archive-detail-modal';
     
     modal.innerHTML = `
         <div class="modal-content">
-            <span class="close-modal">×</span>
+            <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:2rem; cursor:pointer;">×</span>
             <div class="chara-img-box" style="margin:0 auto 15px; width:100px; height:100px; border-radius:50%; overflow:hidden; border:2px solid #ff0055;">
                 <img src="${char.image}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
             </div>
@@ -465,10 +414,10 @@ function showArchiveDetail(char) {
 
     // 閉じる処理
     const closeBtn = modal.querySelector('.close-modal');
-    closeBtn.onclick = () => container.innerHTML = '';
+    closeBtn.onclick = () => modal.remove();
     modal.onclick = (e) => {
-        if(e.target === modal) container.innerHTML = '';
+        if(e.target === modal) modal.remove();
     };
 
-    container.appendChild(modal);
+    document.body.appendChild(modal);
 }
