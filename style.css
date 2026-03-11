@@ -314,3 +314,54 @@ input[type=range]::-webkit-slider-runnable-track {
     background: #333;
     border-radius: 2px;
 }
+/* ==========================================
+   📱 スマホ用レスポンシブデザイン
+   ========================================== */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+    .screen {
+        padding: 1.5rem 1rem; /* スマホでは余白を少し減らす */
+    }
+    h1 {
+        font-size: 1.6rem; /* タイトルを少し小さく */
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    .option-btn {
+        padding: 12px;
+        font-size: 0.9rem; /* 選択肢の文字をスマホに最適化 */
+    }
+    #image-area {
+        height: 150px !important; /* 抽象画エリアを少し低く */
+        min-height: 150px;
+    }
+    #result-type-name {
+        font-size: 1.4rem;
+    }
+    .quote-box {
+        font-size: 1rem;
+        padding: 8px;
+    }
+    .chara-img-box {
+        width: 80px;
+        height: 80px;
+    }
+    .profile-box {
+        font-size: 0.8rem;
+    }
+    .stat-row {
+        font-size: 0.7rem;
+    }
+    .slider-labels {
+        font-size: 0.75rem;
+    }
+    .modal-content {
+        padding: 15px;
+        width: 95%;
+    }
+}
