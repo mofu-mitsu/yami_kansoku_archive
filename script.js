@@ -29,7 +29,23 @@ const paramNames = {
     cleanliness: "潔癖・衛生",      // ★NEW! (じゅん、なお)
     lie_hate: "虚偽嫌悪",           // ★NEW! (こふく、かるめ)
     deception: "欺瞞・偽悪",        // ★NEW! (まい、すおう)
-    misanthropy: "人間嫌い"         // ★NEW! (みたろう、れお、まり)
+    misanthropy: "人間嫌い",         // ★NEW! (みたろう、れお、まり)
+    stoicism: "克己・ストイック",
+    fe_fake: "社会的正解の模倣(防衛用Fe)",
+    approval: "承認欲求・自己顕示", // ★NEW! (ももい、みりん等)
+    sacrifice: "自己犠牲・過剰適応" ,
+    observer: "観測者気質",
+    meta_view: "メタ視点",
+    stimulation_need: "刺激欲求",
+    future_fixation: "未来固定視(Ni固着)", // ILI判定用
+    alt_path: "代替案生成(Ne分岐思考)",   // LII判定用
+    reality_fatigue: "現実疲労",
+    fe_awareness: "感情場認識",
+    structure_priority: "構造優先",
+    norm_priority: "規範優先",
+    playfulness: "遊び心",
+    impulsivity: "衝動性",
+    warmth: "情緒温度"
 };
 
 let stats = {};
@@ -97,7 +113,7 @@ function generateAbstractArt(containerId) {
 }
 
 function startExperiment() {
-    currentQuestions = shuffle(allQuestions).slice(0, 15);
+    currentQuestions = shuffle(allQuestions).slice(0, 20);
     for(let k in stats) stats[k] = 0;
     historyLog = [];
     currentQIndex = 0;
@@ -139,9 +155,32 @@ function showQuestion() {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
             btn.innerText = opt.text;
-            btn.onclick = () => handleAnswer(opt.scores);
+            // 確信度チェックボックスがUIにある前提の処理（後述）
+            btn.onclick = () => {
+                // UIから確信度を取得（チェックされていれば1.0、されていなければ0.5）
+                const certaintyCheckbox = document.getElementById('certainty-check');
+                const certainty = (certaintyCheckbox && !certaintyCheckbox.checked) ? 0.5 : 1.0;
+                handleAnswer(opt.scores, certainty);
+            };
             inputArea.appendChild(btn);
         });
+        // ★質問拒否ボタン（メタ回答）を追加
+        const rejectBtn = document.createElement('button');
+        rejectBtn.className = 'option-btn';
+        rejectBtn.style.border = '1px dashed #666';
+        rejectBtn.style.color = '#888';
+        rejectBtn.innerText = "この質問の前提がおかしい / 答えたくない";
+        rejectBtn.onclick = () => handleAnswer({}, 1.0, true);
+        inputArea.appendChild(rejectBtn);
+
+        // ★確信度チェックボックス
+        const certaintyDiv = document.createElement('div');
+        certaintyDiv.style.marginTop = '15px';
+        certaintyDiv.style.textAlign = 'right';
+        certaintyDiv.style.fontSize = '0.8rem';
+        certaintyDiv.style.color = '#aaa';
+        certaintyDiv.innerHTML = `<label><input type="checkbox" id="certainty-check" checked> 確信を持って答える</label>`;
+        inputArea.appendChild(certaintyDiv);
     } else if (q.type === 'text') {
         const input = document.createElement('input');
         input.type = 'text';
@@ -205,6 +244,44 @@ function showQuestion() {
         
         inputArea.appendChild(container);
         inputArea.appendChild(btn);
+    } else if (q.type === 'action') {
+        // ★NEW: 行動観測テスト（ボタン連打トラップ）
+        const desc = document.createElement('p');
+        desc.innerText = q.instruction;
+        desc.style.fontSize = '0.9rem';
+        desc.style.color = '#aaa';
+        desc.style.marginBottom = '20px';
+        inputArea.appendChild(desc);
+
+        // 誘惑のボタン
+        const actionBtn = document.createElement('button');
+        actionBtn.className = 'btn';
+        actionBtn.innerText = q.buttonText;
+        actionBtn.style.background = '#330011'; // 不穏な色
+        actionBtn.style.color = '#ff0055';
+        actionBtn.style.border = '2px solid #ff0055';
+        actionBtn.style.width = '100%';
+        actionBtn.style.padding = '20px';
+        actionBtn.style.fontSize = '1.5rem';
+        
+        let clickCount = 0;
+        actionBtn.onclick = () => {
+            clickCount++;
+            actionBtn.innerText = `WARNING: ${clickCount}`;
+            actionBtn.style.background = `rgba(255, 0, 85, ${Math.min(clickCount * 0.1, 1)})`; // 押すほど赤くなる
+        };
+        inputArea.appendChild(actionBtn);
+
+        // 終了して進むボタン
+        const finishBtn = document.createElement('button');
+        finishBtn.className = 'option-btn';
+        finishBtn.innerText = "観測を終了して次へ";
+        finishBtn.style.marginTop = '20px';
+        finishBtn.onclick = () => {
+            const scores = q.actionLogic(clickCount);
+            handleAnswer(scores);
+        };
+        inputArea.appendChild(finishBtn);
     }
 
     startTime = Date.now();
@@ -220,22 +297,39 @@ function updateTimer() {
     }, 50);
 }
 
-function handleAnswer(scores) {
+function handleAnswer(scores, certainty = 1.0, isRejection = false) {
     clearInterval(timerInterval);
     const timeTaken = (Date.now() - startTime) / 1000;
 
     let timeScores = {};
-    if (timeTaken > 6.0) {
-        if (scores.structure > 0) timeScores.structure = 1;
-        if (scores.mood > 0) timeScores.mood = 1;
-    } else if (timeTaken < 1.5) {
-        if (scores.mood > 0) timeScores.mood = 2;
-        if (scores.void > 0) timeScores.interest = -2;
+    
+    // 質問拒否（「答えたくない」）を選んだ場合
+    if (isRejection) {
+        timeScores.void = 2;
+        timeScores.interest = -3;
+        timeScores.skepticism = 2; // 質問の前提を疑う
+        timeScores.meta_view = 2;  // メタな視点に立つ
     }
 
-    let addedScores = {...scores};
+    // 時間分析
+    if (timeTaken > 6.0) {
+        if (scores && scores.structure > 0) timeScores.structure = 1;
+        if (scores && scores.mood > 0) timeScores.mood = 1;
+        timeScores.self_doubt = 1; // 長考＝自己懐疑
+    } else if (timeTaken < 1.5) {
+        if (scores && scores.mood > 0) timeScores.mood = 2;
+        if (scores && scores.void > 0) timeScores.interest = -2;
+        timeScores.impulsivity = 2; // 即決＝衝動性
+    }
+
+    let addedScores = {...(scores || {})};
     for(let k in timeScores) addedScores[k] = (addedScores[k] || 0) + timeScores[k];
     
+    // 確信度（certainty）の掛け算。確信がない（迷った）場合はスコアが減る
+    for (let key in addedScores) {
+        addedScores[key] = addedScores[key] * certainty;
+    }
+
     historyLog.push(addedScores);
 
     for (let key in addedScores) {
