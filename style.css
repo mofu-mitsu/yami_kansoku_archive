@@ -364,4 +364,31 @@ input[type=range]::-webkit-slider-runnable-track {
         padding: 15px;
         width: 95%;
     }
+    .home-btn{
+        top:10px;
+        left:10px;
+        font-size:0.8rem;
+        padding:10px 14px;
+    }
+}
+.home-btn{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+    text-decoration: none;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    transition: 0.2s;
+}
+
+.home-btn:hover{
+    background: #00ffcc;
+    color: black;
+    box-shadow: 0 0 10px #00ffcc;
 }
