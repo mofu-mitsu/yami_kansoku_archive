@@ -395,14 +395,15 @@ function showResult() {
     const placeholder = document.querySelector('.chara-img-placeholder');
     
     if (bestChar.image) {
-        imgElem.src = bestChar.image;
+        // ★ 自動で images/ フォルダを見に行くように変更
+        imgElem.src = "images/" + bestChar.image; 
         imgElem.style.display = 'block';
         if(placeholder) placeholder.style.display = 'none';
     } else {
         imgElem.style.display = 'none';
         if(placeholder) placeholder.style.display = 'flex';
     }
-
+    
     const statsContainer = document.getElementById('stats-list');
     statsContainer.innerHTML = '';
     const sortedKeys = Object.keys(stats).sort((a, b) => Math.abs(stats[b]) - Math.abs(stats[a]));
@@ -487,7 +488,8 @@ function showArchiveDetail(char) {
         <div class="modal-content">
             <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:2rem; cursor:pointer;">×</span>
             <div class="chara-img-box" style="margin:0 auto 15px; width:100px; height:100px; border-radius:50%; overflow:hidden; border:2px solid #ff0055;">
-                <img src="${char.image}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
+                <!-- ★ 自動で images/ フォルダを見に行くように変更 -->
+                <img src="images/${char.image}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
             </div>
             <h3 style="color:#00ffcc; margin:5px 0;">${char.type_title}</h3>
             <h2 style="font-size:2rem; margin:5px 0;">${char.name}</h2>
