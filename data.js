@@ -20,7 +20,7 @@ const characters = [
         logic: (s) => (s.void * 2) + (s.trauma * 3) + (s.self_doubt * 3) + (s.observer * 2) + (s.alt_path * 1) - (s.trust * 3)
     },
     {
-        id: "azuri", name: "あずり", fullname: "あずり", gender: "Male", group: "虚無・構造破壊",
+        id: "azuri", name: "あずり", fullname: "花咲 梓理（はなさき あずり）", gender: "Male", group: "虚無・構造破壊",
         type_title: "非情冷笑型（爆弾魔）", tags:["INTP", "ILI", "5w6", "ニヒリスト"],
         quote: "思い出？ 愛？ …所詮、その程度のものだろ。",
         desc: "かつては素直だったが、今は冷徹なニヒリスト。プレゼントに爆弾を仕込むような悪賢さと、無慈悲な冷笑を持つ。",
@@ -29,7 +29,7 @@ const characters = [
         logic: (s) => (s.void * 2) + (s.aggression * 3) + (s.future_fixation * 2) + (s.meta_view * 2) - (s.empathy * 3)
     },
     {
-        id: "kiyomi", name: "きよみ", fullname: "きよみ", gender: "Female", group: "虚無・構造破壊",
+        id: "kiyomi", name: "きよみ", fullname: "日矢川 清美（ひやかわ きよみ）", gender: "Female", group: "虚無・構造破壊",
         type_title: "思考解体型（観測ヤンデレ）", tags:["INTP", "ILI", "5w4", "哲学解体"],
         quote: "ねえ、中身見せて？ どうなってるか理解したいだけだから。",
         desc: "愛＝理解。対象を愛するあまり、解体し、実験し、構造を理解しようとする思考型ヤンデレ。",
@@ -38,7 +38,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 3) + (s.fe_interface * 3) + (s.observer * 2) + (s.meta_view * 2) + (s.obsess * 2) - (s.empathy * 3)
     },
     {
-        id: "alice", name: "ありす", fullname: "ありす", gender: "Female", group: "虚無・構造破壊",
+        id: "alice", name: "ありす", fullname: "恵 愛麗糸（めぐみ ありす）", gender: "Female", group: "虚無・構造破壊",
         type_title: "現実消耗型（眠り姫）", tags:["INTP", "ILI", "5w4", "退屈実験"],
         quote: "現実は一層構造すぎて退屈だわ。…夢の方がマシ。",
         desc: "現実に消耗しきっており、言葉の裏側しか見ない。退屈を壊す興味対象が現れるまで眠り続ける。",
@@ -47,7 +47,7 @@ const characters = [
         logic: (s) => (s.boredom * 3) + (s.reality_fatigue * 3) + (s.stimulation_need * 2) + (s.fe_interface * 2) + (s.observer * 1)
     },
     {
-        id: "kaikoku", name: "かいこく", fullname: "かいこく", gender: "Male", group: "虚無・構造破壊",
+        id: "kaikoku", name: "かいこく", fullname: "己之越 開国（みのえつ かいこく）", gender: "Male", group: "虚無・構造破壊",
         type_title: "構造分解享楽型", tags:["ENTP", "ILE", "7w8", "分解フェチ"],
         quote: "乙女すぎワロタww 五臓に六腑が染み渡るわ〜。",
         desc: "人間社会を実験台にする享楽的な愉快犯。構造を揺らして遊ぶ。",
@@ -56,7 +56,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 2) + (s.playfulness * 3) + (s.stimulation_need * 2) + (s.impulsivity * 2) - (s.norm_priority * 2)
     },
     {
-        id: "ryogo", name: "りょうご", fullname: "りょうご", gender: "Male", group: "虚無・構造破壊",
+        id: "ryogo", name: "りょうご", fullname: "水上 亮吾（みずかみ りょうご）", gender: "Male", group: "虚無・構造破壊",
         type_title: "統計共感型", tags:["INTJ", "LSI", "5w6", "知識人"],
         quote: "ミスの確率を分解するとさ、環境要因と内部要因があって――",
         desc: "相手を慰めようとして、なぜか「失敗の統計的確率と環境要因の分解」を語り出してしまう構造重視の知識人。",
@@ -65,7 +65,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 4) + (s.skepticism * 2) + (s.meta_view * 2) - (s.empathy * 3) - (s.trauma * 2)
     },
     {
-        id: "ai", name: "あい", fullname: "あい", gender: "Female", group: "虚無・構造破壊",
+        id: "ai", name: "あい", fullname: "園田 藍（そのた あい）", gender: "Female", group: "虚無・構造破壊",
         type_title: "腹黒威圧型（ドS観測）", tags:["INTP", "ILI", "6w5", "毒舌"],
         quote: "あらあら〜、そんなことも分からないんですか？",
         desc: "笑顔でのんびりした敬語口調だが、内面は腹黒く威圧的。論理で相手を罵倒しがち。",
@@ -74,7 +74,7 @@ const characters = [
         logic: (s) => (s.meta_view * 3) + (s.aggression * 2) + (s.fe_interface * 3) + (s.playfulness * 2)
     },
     {
-        id: "mitarou", name: "みたろう先生", fullname: "みたろう", gender: "Male", group: "虚無・構造破壊",
+        id: "mitarou", name: "みたろう先生", fullname: "村雨 巳太楼（むらさめ みたろう）", gender: "Male", group: "虚無・構造破壊",
         type_title: "感情切断・無関心型", tags:["INTP", "LII", "5w6", "温度ゼロ"],
         quote: "馬鹿にしてんの？ …まあ、どうでもいいけど。",
         desc: "他人に全く興味がない物理教師。感情を理屈で凍結させている。",
@@ -83,7 +83,7 @@ const characters = [
         logic: (s) => (s.void * 3) + (s.misanthropy * 4) + (s.structure_priority * 2) - (s.warmth * 4) - (s.interest * 3)
     },
     {
-        id: "miku", name: "みく", fullname: "みく", gender: "Female", group: "虚無・構造破壊",
+        id: "miku", name: "みく", fullname: "因泥 未玖（いんでい みく）", gender: "Female", group: "虚無・構造破壊",
         type_title: "存在否定合理型（反出生論）", tags:["INTP", "ILI", "5w6", "ASD"],
         quote: "存在することは、コストの連鎖でしかないわ。",
         desc: "「生＝苦痛の再生産」と定義し、断ち切ることが合理的だと考える哲学的ペシミスト。",
@@ -92,7 +92,7 @@ const characters = [
         logic: (s) => (s.void * 3) + (s.future_fixation * 2) + (s.structure_priority * 2) + (s.social_phobia * 2) - (s.ideal * 2)
     },
     {
-        id: "nami", name: "なみ", fullname: "なみ", gender: "Female", group: "虚無・構造破壊",
+        id: "nami", name: "なみ", fullname: "村瀬 奈美（むらせ なみ）", gender: "Female", group: "虚無・構造破壊",
         type_title: "観測者冷笑型（シニカル天使）", tags:["INTP", "ILE", "7w8", "理屈お嬢様"],
         quote: "あらあら、壊れちゃいましたわね。面白いデータですわ。",
         desc: "世界を面白がりながら真実を観測している。他人の決壊も観察対象であり、理屈好きだが責任は取らないシニカルな天使。",
@@ -101,7 +101,7 @@ const characters = [
         logic: (s) => (s.observer * 3) + (s.playfulness * 2) + (s.fe_interface * 2) + (s.structure_priority * 2)
     },
     {
-        id: "yae", name: "やえ", fullname: "やえ", gender: "Female", group: "理想・内省",
+        id: "yae", name: "やえ", fullname: "藍河 八重 （あいかわ やえ）", gender: "Female", group: "理想・内省",
         type_title: "構成要素分解型（朴念仁）", tags:["INTP", "LII", "5w6", "自己迷子"],
         quote: "私って、何で構成されてるんだろう…？",
         desc: "感じる前に考えてしまうタイプ。「自分」という存在が何で出来ているのか分からず、他者の視線を理解しつつも迎合しない。",
@@ -110,7 +110,7 @@ const characters = [
         logic: (s) => (s.self_doubt * 4) + (s.meta_view * 2) + (s.observer * 2) + (s.structure_priority * 2)
     },
     {
-        id: "mihi", name: "みひ", fullname: "みひ", gender: "Female (X-gender)", group: "攻撃・反抗",
+        id: "mihi", name: "みひ", fullname: "杠葉 実陽（ゆずりは みひ）", gender: "Female (X-gender)", group: "攻撃・反抗",
         type_title: "社会構造敵対型", tags:["INTP", "ILI", "5w4", "社会不信"],
         quote: "なんで男女で差が生まれるんか、考えたことある？",
         desc: "大人しいが人を寄せ付けない。「なぜ男女で差が生まれるのか」という構造思考を持ち、不平等な社会そのものを敵に回す。",
@@ -119,7 +119,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 3) + (s.skepticism * 3) + (s.aggression * 2) + (s.future_fixation * 1) - (s.trust * 3)
     },
     {
-        id: "tamotsu", name: "たもつ", fullname: "たもつ", gender: "Male", group: "虚無・構造破壊",
+        id: "tamotsu", name: "たもつ", fullname: "左京 寿（さきょう たもつ）", gender: "Male", group: "虚無・構造破壊",
         type_title: "才能生存戦略型（腹黒）", tags:["INTJ", "LII", "5w6", "評価主義"],
         quote: "観測されない価値なんて、存在せぇへんのと同じやろ？",
         desc: "綺麗事が嫌いな腹黒策士。「才能が評価される＝生存に有利」という冷徹な構造思考を持ち、はんなりとした態度で相手を測る。",
@@ -131,7 +131,7 @@ const characters = [
     // GROUP: 規範・秩序・潔癖 (Order / Justice)
     // ==========================================
       {
-        id: "jun", name: "じゅん", fullname: "じゅん", gender: "Male", group: "規範・秩序",
+        id: "jun", name: "じゅん", fullname: "水洗 純（みずあらい じゅん）", gender: "Male", group: "規範・秩序",
         type_title: "衛生統制型（潔癖防衛）", tags:["ISTJ", "LSI", "1w9", "完全除菌"],
         quote: "汚い…近づかないでください。除菌が先です。",
         desc: "極度の潔癖症で完璧主義。汚れ＝悪とみなし、物理的にも精神的にも「無菌状態」を保とうとする。",
@@ -139,7 +139,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 3) + (s.cleanliness * 4) + (s.obsess * 2) - (s.playfulness * 2)
     },
     {
-        id: "nao", name: "なお", fullname: "なお", gender: "Male", group: "規範・秩序",
+        id: "nao", name: "なお", fullname: "前板 尚（まえいた なお）", gender: "Male", group: "規範・秩序",
         type_title: "合理的奉仕型", tags:["INTJ", "LII", "5w6", "整理整頓"],
         quote: "誰かがやらなあかんからやる。合理的やろ？",
         desc: "不思議ちゃんだが合理的。考えすぎる自分を止めたいと思いつつ、掃除など「実を取る」行動で思考を整理する。",
@@ -147,7 +147,7 @@ const characters = [
         logic: (s) => (s.justice * 2) + (s.cleanliness * 3) + (s.alt_path * 2) + (s.self_doubt * 1)
     },
     {
-        id: "itsuki", name: "いつき", fullname: "いつき", gender: "Female", group: "規範・秩序",
+        id: "itsuki", name: "いつき", fullname: "菅原 斎（すがわら いつき）", gender: "Female", group: "規範・秩序",
         type_title: "排除合理型", tags:["INTJ", "LII", "8w9", "徹底排除"],
         quote: "不快。論理的にも不要。…だから排除する。",
         desc: "歪んだ社会に対して冷ややか。論理的理由をつけて徹底的に不快なものを排除・断罪する。",
@@ -155,7 +155,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 2) + (s.aggression * 2) + (s.structure_priority * 2) + (s.misanthropy * 2)
     },
     {
-        id: "karume", name: "かるめ", fullname: "かるめ", gender: "Male (Crossdress)", group: "規範・秩序",
+        id: "karume", name: "かるめ", fullname: "明嵐 花流愛（めあらし かるめ）", gender: "Male (Crossdress)", group: "規範・秩序",
         type_title: "構造防衛型（PTSG）", tags:["INTJ", "LII", "5w6", "成長痛"],
         quote: "逸脱は波紋だよ。石そのものより、広がり方の方が問題なんだ。",
         desc: "嘘と本質を見抜く。基準からの逸脱を恐れるが、過去の傷を乗り越え成長しようとする論理的防衛。",
@@ -164,7 +164,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 3) + (s.alt_path * 2) + (s.lie_hate * 3) + (s.trauma * 2) - (s.trust * 2)
     },
     {
-        id: "kouta", name: "こうた", fullname: "こうた", gender: "Male", group: "規範・秩序",
+        id: "kouta", name: "こうた", fullname: "桃山 小歌（ももやま こうた）", gender: "Male", group: "規範・秩序",
         type_title: "規範絶対化型", tags:["ENTJ", "LIE", "1w2", "正論武装"],
         quote: "それは間違っている。論理的に、倫理的に、排除されるべきだ。",
         desc: "正論を盾に感情を処理し、他者への断罪が激しい。Fi劣勢ゆえに自責はせず世界を正そうとする。",
@@ -172,7 +172,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 3) + (s.control * 2) + (s.structure_priority * 2) - (s.self_deny * 3)
     },
     {
-        id: "shizuka", name: "しずか", fullname: "しずか", gender: "Female", group: "規範・秩序",
+        id: "shizuka", name: "しずか", fullname: "灰住 鎮花（はいずみ しずか）", gender: "Female", group: "規範・秩序",
         type_title: "正義硬直型", tags:["ISTJ", "LSI", "1w9", "正解依存"],
         quote: "99点じゃ意味がないの。完璧じゃない私は、いらない。",
         desc: "感情を殺して正解を選び続けるが、その厳しさはやがて自分自身を破壊する。",
@@ -180,7 +180,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 3) + (s.future_fixation * 2) + (s.self_deny * 3)
     },
     {
-        id: "kofuku", name: "こふく", fullname: "こふく", gender: "Male", group: "規範・秩序",
+        id: "kofuku", name: "こふく", fullname: "山神 小福（やまがみ こふく）", gender: "Male", group: "規範・秩序",
         type_title: "秩序原理型（偽り拒絶）", tags:["ISTJ", "LSI", "5w6", "山の神"],
         quote: "本音を出さない人間を、俺は軽蔑する。",
         desc: "偽りが嫌いで嘘を許さない。感情表現を「演技」だと思っており、感情そのものを信用していない。",
@@ -188,7 +188,7 @@ const characters = [
         logic: (s) => (s.lie_hate * 4) + (s.norm_priority * 2) - (s.fe_fake * 3) - (s.trust * 2)
     },
     {
-        id: "hana", name: "はな", fullname: "はな", gender: "Female", group: "規範・秩序",
+        id: "hana", name: "はな", fullname: "恵 花（めぐみ はな）", gender: "Female", group: "規範・秩序",
         type_title: "価値条件型", tags:["INTJ", "LII", "5w6", "存在証明"],
         quote: "努力して、資格を取って…そうじゃないと、ここにいる意味がない。",
         desc: "存在意義を「定義」しようとする。努力や成果が基準に届かないと、存在価値ごと揺らぐ。",
@@ -196,7 +196,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 2) + (s.self_deny * 3) + (s.social_phobia * 2) + (s.self_doubt * 2)
     },
     {
-        id: "suzu", name: "すず", fullname: "すず", gender: "Female", group: "規範・秩序",
+        id: "suzu", name: "すず", fullname: "忍足 鈴（おしたり すず）", gender: "Female", group: "規範・秩序",
         type_title: "忍耐防衛型", tags:["INTJ", "LII", "1w9", "しつけ"],
         quote: "私は、ええ子にしてるよ。…そうしないと、入れてもらえないから。",
         desc: "親の厳しすぎるしつけ（締め出し）により、ルールを守ることに固執する。理不尽への静かな疑問を抱える。",
@@ -204,7 +204,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 3) + (s.trauma * 2) + (s.self_doubt * 2)
     },
     {
-        id: "rinon", name: "りのん", fullname: "りのん", gender: "Female", group: "規範・秩序",
+        id: "rinon", name: "りのん", fullname: "浅苧 李音（あさお りのん）", gender: "Female", group: "規範・秩序",
         type_title: "結果至上型", tags: ["ENTJ", "LIE", "3w4", "成果依存"],
         quote: "結果が全てよ。歌で証明してみせるわ。",
         desc: "芯が強く負けず嫌い。自己価値を成果でしか測れない。キノコ（制御不能なもの）が弱点。",
@@ -212,7 +212,7 @@ const characters = [
         logic: (s) => (s.pride * 3) + (s.stoicism * 2) + (s.approval * 2) + (s.ideal * 2)
     },
     {
-        id: "kahoko", name: "かほこ", fullname: "かほこ", gender: "Female", group: "規範・秩序",
+        id: "kahoko", name: "かほこ", fullname: "虹林 佳穂子（にじばやし かほこ）", gender: "Female", group: "規範・秩序",
         type_title: "正解依存型（整合固着）", tags:["ISTJ", "LSI", "1w9", "セオリー絶対"],
         quote: "セオリー通りなら失敗しないはず。想定外は…困る。",
         desc: "論理、整合性、合理を愛する。答えがない状態に弱く、今までの「正解」に固執する。",
@@ -220,7 +220,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 3) + (s.structure_priority * 2) - (s.alt_path * 2) // 代替案が苦手
     },
     {
-        id: "mikoto", name: "みこと", fullname: "みこと", gender: "Female", group: "規範・秩序",
+        id: "mikoto", name: "みこと", fullname: "櫻井 甫詞（さくらい みこと）", gender: "Female", group: "規範・秩序",
         type_title: "使命転化型（憎悪昇華）", tags: ["ENTJ", "SLE", "3w4", "暗殺者"],
         quote: "人生を投げ出すな。憎しみも燃料にして、戦え。",
         desc: "陽気に見えるが内面は冷酷な元暗殺組織員。過去の憎しみを「使命」に変換して生きている。気配を消すのが得意。",
@@ -228,7 +228,7 @@ const characters = [
         logic: (s) => (s.aggression * 3) + (s.stoicism * 2) + (s.mask * 2) + (s.trauma * 2)
     },
     {
-        id: "chizu", name: "ちず", fullname: "ちず", gender: "Female", group: "規範・秩序",
+        id: "chizu", name: "ちず", fullname: "歩行田 地図（かちた ちず）", gender: "Female", group: "規範・秩序",
         type_title: "実践哲学型（動的正義）", tags:["ENTJ", "LIE", "1w9", "冒険哲学"],
         quote: "行こう。答えは空を見て、歩きながら考えるものだよ。",
         desc: "正しさを「動的な仮説」と捉える冒険家。迷いも含めて前進材料にする健全さを持つが、孤独も希望も抱える。",
@@ -236,7 +236,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 2) + (s.ideal * 2) + (s.alt_path * 3) + (s.interest * 2) // 代替案で進む
     },
     {
-        id: "aira", name: "あいら", fullname: "あいら", gender: "Female", group: "規範・秩序",
+        id: "aira", name: "あいら", fullname: "塩田 娃良（しおた あいら）", gender: "Female", group: "規範・秩序",
         type_title: "構造破壊観測型（反権力）", tags: ["ISTP", "SLI", "5w6", "システム破壊"],
         quote: "そのシステム、バグだらけだね。…壊した方が早いんじゃない？",
         desc: "ツンツンしていて淡白。システム全体を俯瞰し、権力構造や支配を「汚染」として警戒する。",
@@ -244,7 +244,7 @@ const characters = [
         logic: (s) => (s.structure_priority * 3) + (s.skepticism * 3) + (s.aggression * 2) - (s.trust * 3)
     },
     {
-        id: "aina", name: "あいな", fullname: "あいな", gender: "Female", group: "規範・秩序",
+        id: "aina", name: "あいな", fullname: "女良 愛奈（めら あいな）", gender: "Female", group: "規範・秩序",
         type_title: "達成駆動型（停止恐怖）", tags:["ESTJ", "LSE", "3w2", "文画部"],
         quote: "止まってる暇なんてない。不完全なままじゃ嫌なの。",
         desc: "勝気で負けず嫌い、非常にストイック。現在の状態を「不完全」と認識し、止まることを恐れてストレートに突き進む。",
@@ -252,7 +252,7 @@ const characters = [
         logic: (s) => (s.stoicism * 4) + (s.aggression * 2) + (s.norm_priority * 2)
     },
     {
-        id: "kochan", name: "こう", fullname: "こうちゃん", gender: "Female", group: "規範・秩序",
+        id: "kochan", name: "こう", fullname: "早風 香 （はやかぜ こう）", gender: "Female", group: "規範・秩序",
         type_title: "報酬正義型（承認義務化）", tags:["ENFJ", "EIE", "1w2", "理想過剰"],
         quote: "私が正しいと信じた道を行く。だから、信じて欲しい。",
         desc: "真面目でプライドが高く、報われたい思いが強い。後悔を格好悪いとし、世界の方を正そうとする。",
@@ -264,7 +264,7 @@ const characters = [
     // GROUP: 攻撃・反抗・議論 (Aggression / Debate)
     // ==========================================
     {
-        id: "honoka", name: "ほのか", fullname: "ほのか", gender: "Female", group: "攻撃・反抗",
+        id: "honoka", name: "ほのか", fullname: "大野 蓬乃果（おおの ほのか）", gender: "Female", group: "攻撃・反抗",
         type_title: "論破防衛型", tags:["ENTP", "ILE", "6w7", "論破厨"],
         quote: "は？ その理屈、破綻してるけど。論外。",
         desc: "不安や弱さを「論破」や「否定」で隠そうとする。くだらないものを諭し、見下すことで自我を保つ。",
@@ -272,7 +272,7 @@ const characters = [
         logic: (s) => (s.aggression * 3) + (s.pride * 3) + (s.skepticism * 2) - (s.empathy * 3)
     },
     {
-        id: "suo", name: "すおう", fullname: "すおう", gender: "Male", group: "攻撃・反抗",
+        id: "suo", name: "すおう", fullname: "村瀬 蘇芳（むらせ すおう）", gender: "Male", group: "攻撃・反抗",
         type_title: "神話離脱型（皮肉不信）", tags:["ENTP", "ILE", "7w8", "人間不信"],
         quote: "神様にお願い？ 笑わせるな。人間の都合なんて知ったことか。",
         desc: "元々祀られていたが、人間の身勝手さに嫌気が差した。演技が上手く狡猾で、人間への憤怒を皮肉で包む。",
@@ -280,7 +280,7 @@ const characters = [
         logic: (s) => (s.deception * 4) + (s.mask * 3) + (s.misanthropy * 2) + (s.void * 2) - (s.trust * 3)
     },
     {
-        id: "mikari", name: "みかり", fullname: "みかり", gender: "Female", group: "攻撃・反抗",
+        id: "mikari", name: "みかり", fullname: "加籐 実花里（かとう みかり）", gender: "Female", group: "攻撃・反抗",
         type_title: "外罰防衛型", tags:["ENTP", "ILE", "6w7", "他責"],
         quote: "全部あいつのせいだもん！ 私は悪くない！",
         desc: "暗闇に閉じ込められた過去を持つ。強気だが根暗で、自己保存のためにすぐ人のせいにする。",
@@ -288,7 +288,7 @@ const characters = [
         logic: (s) => (s.aggression * 3) + (s.trauma * 3) + (s.impulsivity * 2) + (s.self_deny * 1)
     },
     {
-        id: "nagisa", name: "なぎさ", fullname: "なぎさ", gender: "Female", group: "攻撃・反抗",
+        id: "nagisa", name: "なぎさ", fullname: "代々木 渚（よよぎ なぎさ）", gender: "Female", group: "攻撃・反抗",
         type_title: "反骨孤立型", tags:["ENFP", "IEE", "4w3", "平凡恐怖"],
         quote: "普通とか無理。…でも、特別な人間にもなれない。",
         desc: "世間に対して強いNOを持つ。夢を見ても叶わないと嘆き、平凡であることを何より恐れる。",
@@ -296,7 +296,7 @@ const characters = [
         logic: (s) => (s.ideal * 3) + (s.pride * 2) + (s.self_deny * 3) - (s.future_fixation * 2)
     },
     {
-        id: "enya", name: "えんや", fullname: "えんや", gender: "Male", group: "攻撃・反抗",
+        id: "enya", name: "えんや", fullname: "暗 援也（はらい えんや）", gender: "Male", group: "攻撃・反抗",
         type_title: "誇大ヒーロー型", tags:["ESTP", "ILE", "3w2", "支配拒否"],
         quote: "世界を救えるのはオレだけだろ？ 支配されるなんて御免だね。",
         desc: "ナルシストでヒーローぶっているが、根底には「支配される側でいたくない」という強いプライドがある。",
@@ -304,7 +304,7 @@ const characters = [
         logic: (s) => (s.mask * 3) + (s.approval * 3) + (s.pride * 3) - (s.depend * 3)
     },
     {
-        id: "saichan", name: "さいちゃん", fullname: "さいちゃん", gender: "Female", group: "攻撃・反抗",
+        id: "saichan", name: "さい", fullname: "土倉 彩（つちくら さい）", gender: "Female", group: "攻撃・反抗",
         type_title: "反抗現実型（即時自我）", tags:["ESTP", "SEE", "8w7", "クソ喰らえ"],
         quote: "誰かの正解なんてクソ喰らえ。私は私を貫く。",
         desc: "強気で現実に抗い、自分を貫き通す。頭は悪いかもしれないが、いつでも堂々としている。",
@@ -312,7 +312,7 @@ const characters = [
         logic: (s) => (s.aggression * 3) + (s.impulsivity * 3) + (s.interest * 2) - (s.norm_priority * 3)
     },
     {
-        id: "atsushi", name: "あつしくん", fullname: "あつしくん", gender: "Male", group: "攻撃・反抗",
+        id: "atsushi", name: "あつし", fullname: "天王寺 淳志（てんのうじ あつし）", gender: "Male", group: "攻撃・反抗",
         type_title: "現実回避・光過剰投影型", tags:["ESFP", "SEE", "9w8", "王子様"],
         quote: "暗いなら、自分が星になって輝いちゃえばいいじゃん！！",
         desc: "問題を直視せず、全てをポジティブに変換することで闇を回避している。「影を見ない」ことによる歪み。",
@@ -320,7 +320,7 @@ const characters = [
         logic: (s) => (s.ideal * 4) + (s.warmth * 3) + (s.playfulness * 2) - (s.void * 2)
     },
     {
-        id: "miika", name: "みいか", fullname: "みいか", gender: "Female", group: "攻撃・反抗",
+        id: "miika", name: "みいか", fullname: "柿窪 未唯樺（かきくぼ みいか）", gender: "Female", group: "攻撃・反抗",
         type_title: "加速依存・両極端型", tags: ["ESFP", "SEE", "7w6", "スピード狂"],
         quote: "考えるより走れ！ 止まったら負けだよ！",
         desc: "勢い任せで両極端。「リベンジ」「打倒」への意識が強く、動きすぎて関係を壊すこともある。",
@@ -332,7 +332,7 @@ const characters = [
     // GROUP: 孤独・諦観・回避 (Isolation / Avoidance)
     // ==========================================
     {
-        id: "kuu", name: "くう", fullname: "くう", gender: "Female", group: "孤独・諦観",
+        id: "kuu", name: "くう", fullname: "中井 空羽（なかい くう）", gender: "Female", group: "孤独・諦観",
         type_title: "孤高諦観型", tags:["INTJ", "ILI", "5w4", "孤独の王"],
         quote: "どうせ最後は一人になる。なら、最初から馴染まなくていい。",
         desc: "「どうせ馴染めない」と理解して撤退を選んだ。孤独を受け入れ、諦念の中に安らぎを見出す。",
@@ -341,7 +341,7 @@ const characters = [
         logic: (s) => (s.future_fixation * 3) + (s.void * 3) + (s.reality_fatigue * 2) - (s.mood * 2)
     },
     {
-        id: "reo", name: "れお", fullname: "れお", gender: "Male", group: "孤独・諦観",
+        id: "reo", name: "れお", fullname: "栗垣 伶央（くりがき れお）", gender: "Male", group: "孤独・諦観",
         type_title: "感情不信型", tags:["INTJ", "LII", "5w6", "弱さ嫌悪"],
         quote: "上辺だけの友情なんて不要だ。他人の感情なんて読めないし、怖い。",
         desc: "冷静沈着だが人嫌い。感情を信用できず、弱い自分が何よりも嫌い。",
@@ -349,7 +349,7 @@ const characters = [
         logic: (s) => (s.misanthropy * 4) + (s.self_doubt * 2) + (s.self_deny * 2) - (s.trust * 4)
     },
     {
-        id: "ruruka", name: "るるか", fullname: "るるか", gender: "Female", group: "孤独・諦観",
+        id: "ruruka", name: "るるか", fullname: "織田 瑠々花（おだ るるか）", gender: "Female", group: "孤独・諦観",
         type_title: "不安思考型", tags:["INTP", "LII", "6w5", "白黒不能恐怖"],
         quote: "どうすればいいか分からない…。白黒つけられないのが一番苦痛なの。",
         desc: "どう処理すればいいか分からず、自分の判断に自信が持てない。白黒つけられないこと自体が苦痛。",
@@ -357,7 +357,7 @@ const characters = [
         logic: (s) => (s.self_doubt * 4) + (s.social_phobia * 3) + (s.alt_path * 2) + (s.mood * 2)
     },
     {
-        id: "ameri", name: "あめり", fullname: "あめり", gender: "Female", group: "孤独・諦観",
+        id: "ameri", name: "あめり", fullname: "岡崎 愛芽里（おかざき あめり）", gender: "Female", group: "孤独・諦観",
         type_title: "離脱観測型", tags:["INTP", "ILI", "5w4", "社会拒否"],
         quote: "挨拶すらスムーズにできない…。もう、遠くから見てるだけでいいや。",
         desc: "自己肯定感が低く、社会を拒否して行動しない。ゆめかわ好きだが、静かに離脱を選ぶ。",
@@ -365,7 +365,7 @@ const characters = [
         logic: (s) => (s.reality_fatigue * 4) + (s.social_phobia * 3) + (s.void * 2) + (s.future_fixation * 1)
     },
     {
-        id: "kotori", name: "ことり", fullname: "ことり", gender: "Male", group: "孤独・諦観",
+        id: "kotori", name: "ことり", fullname: "酒々井 小鳥（しすい ことり）", gender: "Male", group: "孤独・諦観",
         type_title: "享楽逃避型", tags:["INTP", "ILI", "7w8", "諦め"],
         quote: "今更やったって追いつけんやろ。楽しくやろうぜー。",
         desc: "享楽的で楽な方に逃げる。成績最下位だが、追いつけないと理解して諦めきっている。",
@@ -373,7 +373,7 @@ const characters = [
         logic: (s) => (s.boredom * 3) + (s.reality_fatigue * 2) + (s.impulsivity * 2) - (s.structure_priority * 2)
     },
     {
-        id: "yuzu", name: "ゆず", fullname: "ゆず", gender: "Female", group: "孤独・諦観",
+        id: "yuzu", name: "ゆず", fullname: "昆沙丸 柚子（びさまる ゆず）", gender: "Female", group: "孤独・諦観",
         type_title: "忘却ポーカーフェイス型", tags:["INTJ", "ILI", "5w6", "招き猫"],
         quote: "……（無言でじっと見つめる）",
         desc: "幸運体質を利用された過去から、無口でポーカーフェイスを貫く。苦い経験は夢の中にしまい込む。",
@@ -381,7 +381,7 @@ const characters = [
         logic: (s) => (s.mask * 4) + (s.trauma * 3) + (s.future_fixation * 2) + (s.observer * 2)
     },
     {
-        id: "shinon", name: "しのん", fullname: "しのん", gender: "Male", group: "孤独・諦観",
+        id: "shinon", name: "しのん", fullname: "細物 詩温（ほそもの しのん）", gender: "Male", group: "孤独・諦観",
         type_title: "抑うつ型（内向自責）", tags: ["INFP", "4w5", "自責ループ"],
         quote: "ごめんなさい…全部僕の責任です。逃げたい……。",
         desc: "真面目で責任感が強いがゆえに、他人の気持ちを優先しすぎて心が折れた。憂鬱で現実逃避しがち。",
@@ -389,7 +389,7 @@ const characters = [
         logic: (s) => (s.sacrifice * 3) + (s.self_deny * 4) + (s.social_phobia * 2) + (s.mood * 3)
     },
     {
-        id: "koyuki", name: "こゆき", fullname: "こゆき", gender: "Female", group: "孤独・諦観",
+        id: "koyuki", name: "こゆき", fullname: "浦島 小雪（うらしま こゆき）", gender: "Female", group: "孤独・諦観",
         type_title: "静的諦観型（哲学的孤立）", tags: ["INXP", "4w5", "諦観"],
         quote: "誰にも分かってもらえないのは前提だよ。それがなんだって言うの？",
         desc: "社会構造的に孤立は必然だと理解している。悲鳴をあげるわけでもなく、淡々とその事実を受け入れ、冷ややかな視線で社会を皮肉る。",
@@ -397,15 +397,15 @@ const characters = [
         logic: (s) => (s.void * 3) + (s.observer * 3) + (s.future_fixation * 2) - (s.self_deny * 2)
     },
     {
-        id: "luna", name: "るな", fullname: "るな", gender: "Female", group: "孤独・諦観",
+        id: "luna", name: "るな", fullname: "槻 琉奈（けやき るな）", gender: "Female", group: "孤独・諦観",
         type_title: "接触恐怖型（自己隔離防衛）", tags: ["ISFP", "SEI", "6w5", "静電気"],
-        quote: "気安く触らないで。…傷つけたくないの。",
+        quote: "触らないで。…傷つけたくないの。",
         desc: "触れること＝傷つけること。静電気体質により、他者との接触を極度に恐れる。強がりは脆さの裏返し。",
         image: "luna.png",
         logic: (s) => (s.social_phobia * 3) + (s.self_deny * 2) + (s.mood * 2) - (s.trust * 2)
     },
     {
-        id: "haruto", name: "はると", fullname: "はると", gender: "Male", group: "孤独・諦観",
+        id: "haruto", name: "はると", fullname: "岡田 陽斗（おかだ はると）", gender: "Male", group: "孤独・諦観",
         type_title: "感情防衛・回避型", tags:["INFP", "EII", "4w5", "期待拒否"],
         quote: "期待しないでください…。僕は、弱いから。",
         desc: "傷つきたくない、理解されたいという矛盾。感情を揺さぶってくる相手を避け、期待を押し付けられることを恐れる。",
@@ -413,15 +413,15 @@ const characters = [
         logic: (s) => (s.social_phobia * 3) + (s.mood * 3) + (s.self_deny * 2) - (s.trust * 2)
     },
     {
-        id: "mikina", name: "みきな", fullname: "みきな", gender: "Female", group: "孤独・諦観",
+        id: "mikina", name: "みきな", fullname: "鈴木 幹菜（すずき みきな）", gender: "Female", group: "孤独・諦観",
         type_title: "感情抑制逃避型", tags:["ENFP", "IEE", "6w5", "ポーカーフェイス"],
         quote: "あはは、そうだね。（早く逃げなきゃ…）",
-        desc: "誰とでも仲良くなれるように見せて、実は一歩引いている。自分の感情を認める前に尻尾を巻いて逃げる。",
+        desc: "誰とでも仲良くなれるように見せて、実は一歩引いている。自分の感情を認める前に逃げる。",
         image: "mikina.png",
         logic: (s) => (s.fe_interface * 3) + (s.mask * 3) - (s.mood * 2) - (s.trust * 2)
     },
     {
-        id: "mari", name: "まり", fullname: "まり", gender: "Female", group: "孤独・諦観",
+        id: "mari", name: "まり", fullname: "愛野 麻理（あいの まり）", gender: "Female", group: "孤独・諦観",
         type_title: "境界線防衛型（関係選別）", tags:["INFP", "EII", "4w5", "人間不信"],
         quote: "……そこから先は、入ってこないで。",
         desc: "人嫌いで人間不信。自分と他者の間に明確な境界線を引き、関係を厳しく選別する。",
@@ -429,7 +429,7 @@ const characters = [
         logic: (s) => (s.misanthropy * 3) + (s.ideal * 2) + (s.social_phobia * 2) - (s.trust * 3)
     },
     {
-        id: "kioka", name: "きおか", fullname: "きおか", gender: "Female", group: "孤独・諦観",
+        id: "kioka", name: "きおか", fullname: "河菜 希緒花（かわな きおか）", gender: "Female", group: "孤独・諦観",
         type_title: "断定悲観型（未来固定）", tags:["INTJ", "ILI", "5w6", "絶望採点"],
         quote: "未来なんてないよ。だから、落ちるだけ。",
         desc: "「未来はない」と決め打ち、現実世界を冷静に採点・切断する。年齢にそぐわない深い絶望と諦観を持つ。",
@@ -437,15 +437,15 @@ const characters = [
         logic: (s) => (s.future_fixation * 4) + (s.reality_fatigue * 3) + (s.void * 2) + (s.observer * 2)
     },
     {
-        id: "kyuta", name: "きゅうた", fullname: "きゅうた", gender: "Male", group: "孤独・諦観",
+        id: "kyuta", name: "きゅうた", fullname: "品衛 球太（しなえ きゅうた）", gender: "Male", group: "孤独・諦観",
         type_title: "遮断型内省（未来過多後悔）", tags:["INTJ", "LII", "5w6", "視界遮断"],
         quote: "見なければ…考えなくて済むのに……。",
-        desc: "前髪で顔を隠すのは情報と感情を遮断するため。無限に可能性を想像してしまい、後悔がまとわりつく。",
+        desc: "前髪で顔を隠すのは情報と感情を遮断するため。入ってきたら無限に可能性を想像してしまい、永遠と後悔する。",
         image: "kyuta.png", 
         logic: (s) => (s.alt_path * 3) + (s.self_doubt * 4) + (s.self_deny * 3) + (s.social_phobia * 2)
     },
     {
-        id: "hiyori", name: "ひより", fullname: "ひより", gender: "Female", group: "孤独・諦観",
+        id: "hiyori", name: "ひより", fullname: "大竹 日和（おおたけ ひより）", gender: "Female", group: "孤独・諦観",
         type_title: "消去願望・自己希薄型", tags:["ISFP", "SEI", "9w1", "事勿れ"],
         quote: "あ、ごめんね…私が全部悪いから、無かったことにして。",
         desc: "平和重視で断れない。嫌なものを全て「無かったこと」にして消そうとする。自己主張を消して世界を丸く保つ。",
@@ -457,7 +457,7 @@ const characters = [
     // GROUP: 理想・内省・芸術 (Ideal / Introspection)
     // ==========================================
     {
-        id: "kanata", name: "かなた先生", fullname: "かなた", gender: "Male", group: "理想・内省",
+        id: "kanata", name: "かなた先生", fullname: "森川 奏太（もりかわ かなた）", gender: "Male", group: "理想・内省",
         type_title: "文化財保全型（社会的正解Fe）", tags:["INTJ", "LII", "5w4", "左脳派"],
         quote: "君のその感情は、尊いものだね。（…ということに、しておくのが正解だな）",
         desc: "表向きは共感的で優しそうに見えるが、中身は超理論派。共感は「社会的正解」として選択しているだけで、自分が感情に支配されることはない。",
@@ -465,16 +465,16 @@ const characters = [
         logic: (s) => (s.fe_fake * 4) + (s.structure_priority * 3) + (s.observer * 2) + (s.ideal * 1) - (s.mood * 3)
     },
     {
-        id: "mizuki", name: "みづき", fullname: "みづき", gender: "Female", group: "理想・内省",
+        id: "miduki", name: "みづき", fullname: "貴虎 深月（きとら みづき）", gender: "Female", group: "理想・内省",
         type_title: "理想追求型（静謐な観測者）", tags:["INTP", "LII", "5w4", "オリジナリティ"],
         quote: "どうして世界はこうなんだろう？ …私の色は、まだ足りない。",
         desc: "気弱でコミュ障だが、理論的に理想を追求する。世界を静かに観測し「オリジナリティ」を問い続ける。",
-        image: "mizuki.png", 
+        image: "miduki.png", 
         // ★LII特化（代替案、自己懐疑、創造性）
         logic: (s) => (s.alt_path * 3) + (s.creativity * 3) + (s.self_doubt * 3) + (s.social_phobia * 2) + (s.ideal * 2)
     },
     {
-        id: "nobu", name: "のぶ", fullname: "のぶ", gender: "Male", group: "理想・内省",
+        id: "nobu", name: "のぶ", fullname: "新田 誠（にいだ のぶ）", gender: "Male", group: "理想・内省",
         type_title: "到達不能型（焦燥の画家）", tags:["INTJ", "LII", "3w4", "文画部"],
         quote: "俺はまだ、ここに至るはずじゃなかった。…なぜ動けない？",
         desc: "勝ち気でストイックな絵描き。「評価されたい」以上に「理想の自分を回収できていない」ことに苛立つ。",
@@ -482,7 +482,7 @@ const characters = [
         logic: (s) => (s.stoicism * 4) + (s.ideal * 3) + (s.creativity * 3) + (s.pride * 2) + (s.self_deny * 2)
     },
     {
-        id: "yuko", name: "ゆこ", fullname: "ゆこ", gender: "Female", group: "理想・内省",
+        id: "yuko", name: "ゆこ", fullname: "橘定 由子（きつじょう ゆこ）", gender: "Female", group: "理想・内省",
         type_title: "失敗回避型内省", tags:["INFJ", "EII", "4w5", "失速恐怖"],
         quote: "私は失敗できないの。完璧に見える？ …それは良かった。",
         desc: "思慮深く知的だが、「世界を失敗できない場所」と捉えている。セレブ仮面と内省の狭間で揺れる。",
@@ -490,7 +490,7 @@ const characters = [
         logic: (s) => (s.norm_priority * 3) + (s.mask * 3) + (s.self_deny * 2) + (s.ideal * 2)
     },
     {
-        id: "zakuro", name: "ざくろ", fullname: "ざくろ", gender: "Male", group: "理想・内省",
+        id: "zakuro", name: "ざくろ", fullname: "更級 柘榴（さらしな ざくろ）", gender: "Male", group: "理想・内省",
         type_title: "失敗ログ蓄積型", tags:["INTJ", "LII", "5w6", "検証厨"],
         quote: "あの時、別の選択肢を取っていれば……確率的には……",
         desc: "存在感が薄く、現実の社会・失敗ログを冷静に積む。自分の選択（思考）の正当性を後から無限に検証してしまう。",
@@ -498,7 +498,7 @@ const characters = [
         logic: (s) => (s.alt_path * 4) + (s.skepticism * 3) + (s.self_doubt * 3) + (s.social_phobia * 2)
     },
     {
-        id: "tsukushi", name: "つくし", fullname: "つくし", gender: "Male", group: "理想・内省",
+        id: "tsukushi", name: "つくし", fullname: "会田 土筆（あいだ つくし）", gender: "Male", group: "理想・内省",
         type_title: "淡々構築型（文芸青年）", tags:["INTJ", "LII", "5w4", "向上心"],
         quote: "……（無言で原稿に向かっている）",
         desc: "寡黙な文芸青年。他人の評価は気にせず、来るもの拒まず。物語で世界を再構築し、ただ淡々と日々を成す。",
@@ -510,7 +510,7 @@ const characters = [
     // GROUP: 依存・演技・情緒 (Dependence / Mask)
     // ==========================================
     {
-        id: "yui", name: "ゆい", fullname: "ゆい", gender: "Female", group: "依存・演技",
+        id: "yui", name: "ゆい", fullname: "土市 結衣（つちいち ゆい）", gender: "Female", group: "依存・演技",
         type_title: "依存操作型（情緒策士）", tags:["INFP", "IEI", "4w3", "メンヘラ策士"],
         quote: "ゆい、ひとりじゃ生きられないもん…ね、ずっと一緒だよね？",
         desc: "自分の弱さと感情を最大の武器として理解している。愛されるためなら手段を選ばず、被害者ムーブも計算の内。",
@@ -518,7 +518,7 @@ const characters = [
         logic: (s) => (s.fe_awareness * 4) + (s.depend * 4) + (s.mask * 3) + (s.approval * 2)
     },
     {
-        id: "gohobi", name: "ご褒美", fullname: "ご褒美", gender: "Male", group: "依存・演技",
+        id: "gohobi", name: "ご褒美", fullname: "栄城 縫（えいしろ ぬい）", gender: "Male", group: "依存・演技",
         type_title: "自己神話型（英雄的倒錯）", tags:["INFP", "IEI", "4w3", "豚紳士"],
         quote: "罵倒は愛の裏返しだゾ♡ 拙者の出汁は極上だゾッ！",
         desc: "自分自身を物語の主人公（あるいは道化）として演出することで世界と対峙している。",
@@ -526,7 +526,7 @@ const characters = [
         logic: (s) => (s.mask * 4) + (s.playfulness * 3) + (s.ideal * 2) + (s.obsess * 2) - (s.self_deny * 3)
     },
     {
-        id: "wakana", name: "わかな", fullname: "わかな", gender: "Female", group: "依存・演技",
+        id: "wakana", name: "わかな", fullname: "可愛 和花奈（かわい わかな）", gender: "Female", group: "依存・演技",
         type_title: "不安把握型（全把握愛着）", tags:["ISFP", "SEI", "4w3", "把握欲"],
         quote: "ねえ、今どこ？ 誰といるの？ 全部教えて？",
         desc: "愛されたい、でも不安。だから相手の全てを把握しようとする。涙は気を引くための武器。",
@@ -534,7 +534,7 @@ const characters = [
         logic: (s) => (s.depend * 4) + (s.obsess * 3) + (s.mood * 3) + (s.empathy * 2)
     },
     {
-        id: "neon", name: "ねおん", fullname: "ねおん", gender: "Male", group: "依存・演技",
+        id: "neon", name: "ねおん", fullname: "男知合 音穏（おちあい ねおん）", gender: "Male", group: "依存・演技",
         type_title: "時間有限型（静的自己否定）", tags: ["INFP", "4w5", "消滅願望"],
         quote: "ごめんなさい…僕なんかが、時間を奪ってしまって。",
         desc: "病弱で時間が限られていると感じている。非常に内気で自尊心が低く、常に周囲に気を使う礼儀正しさを持つ。",
@@ -542,7 +542,7 @@ const characters = [
         logic: (s) => (s.self_deny * 5) + (s.social_phobia * 3) + (s.empathy * 2) + (s.mood * 2)
     },
     {
-        id: "momoi", name: "ももい", fullname: "ももい", gender: "Female", group: "依存・演技",
+        id: "momoi", name: "ももい", fullname: "揚蝶 李伊（あげは ももい）", gender: "Female", group: "依存・演技",
         type_title: "承認依存・競争嫉妬型", tags:["ENFJ", "EIE", "3w2", "量産型嫉妬"],
         quote: "私が一番かわいいでしょ？ …あの子より。",
         desc: "「愛されている私」でいないと気が済まない。比較される世界で常に勝者であろうとし、嫉妬心が強い。",
@@ -550,15 +550,15 @@ const characters = [
         logic: (s) => (s.approval * 5) + (s.pride * 3) + (s.aggression * 2) + (s.depend * 2)
     },
     {
-        id: "mirin", name: "みりん", fullname: "みりん", gender: "Female", group: "依存・演技",
+        id: "mirin", name: "みりん", fullname: "萩枝 美琳（はぎえだ みりん）", gender: "Female", group: "依存・演技",
         type_title: "承認飢餓型（地雷系演出）", tags: ["ENFP", "IEE", "3w2", "承認モンスター"],
-        quote: "見て見て！今日のあたち、世界一かわいいでしょ？",
+        quote: "見て見て！今日のあたし、世界一かわいいでしょ？",
         desc: "「私を見て！」が原動力。可愛い自分、病んでる自分、全てをコンテンツにして承認を浴びたいタイプ。",
         image: "mirin.png",
         logic: (s) => (s.approval * 5) + (s.mask * 3) + (s.impulsivity * 2) + (s.mood * 2) - (s.void * 2)
     },
     {
-        id: "keira", name: "けいら", fullname: "けいら", gender: "Male", group: "依存・演技",
+        id: "keira", name: "けいら", fullname: "袖裂 圭樂（そでさき けいら）", gender: "Male", group: "依存・演技",
         type_title: "自己空洞型（他者基準消耗）", tags: ["ENFJ", "EIE", "2w1", "役割の愛"],
         quote: "君が笑ってくれるなら、僕はそれでいいよ。（…僕って誰？）",
         desc: "表向きは人懐っこいが、内側はずっと「誰のために生きているのか」葛藤している。優しさは役割に過ぎない。",
@@ -566,7 +566,7 @@ const characters = [
         logic: (s) => (s.sacrifice * 5) + (s.fe_fake * 3) + (s.void * 2) + (s.empathy * 2)
     },
     {
-        id: "kaori", name: "かおり", fullname: "かおり", gender: "Female", group: "依存・演技",
+        id: "kaori", name: "かおり", fullname: "路熊 花音莉（ろくま かおり）", gender: "Female", group: "依存・演技",
         type_title: "期待適応型（いい子疲弊）", tags:["ENFJ", "EIE", "4w3", "優等生"],
         quote: "大丈夫、私なら平気だから。（期待に応えなきゃ…）",
         desc: "明るく自由に見えて、人一倍思慮深い。「いい子でいなきゃ」という期待に揺れ、自分の価値観を必死に守り抜く。",
@@ -574,7 +574,7 @@ const characters = [
         logic: (s) => (s.sacrifice * 3) + (s.mask * 4) + (s.approval * 2) + (s.norm_priority * 2)
     },
     {
-        id: "yutasuke", name: "ゆたすけ", fullname: "ゆたすけ", gender: "Male", group: "依存・演技",
+        id: "yutasuke", name: "ゆたすけ", fullname: "身浦 柚太允（みうら ゆたすけ）", gender: "Male", group: "依存・演技",
         type_title: "自己否定・比較侵食型", tags:["ISFJ", "SEI", "9w1", "比較地獄"],
         quote: "みんなすごいなぁ…。それに比べて僕は…。",
         desc: "「みんなが素敵、自分は足りない」という思考。褒められても受け取れず、比較によって愛が尽きていく。",
@@ -582,7 +582,7 @@ const characters = [
         logic: (s) => (s.self_deny * 4) + (s.empathy * 3) + (s.social_phobia * 2) - (s.mask * 2)
     },
     {
-        id: "yuna", name: "ゆな", fullname: "ゆな", gender: "Female", group: "依存・演技",
+        id: "yuna", name: "ゆな", fullname: "橙 由奈（だいだい ゆな）", gender: "Female", group: "依存・演技",
         type_title: "献身暴走・他者依存型", tags:["ESFJ", "ESE", "2w1", "過剰献身"],
         quote: "何か困ってる？ 私にできること全部やるよ！",
         desc: "願望に全て応えようとするあまり、献身が暴走する。「応えるために」動き、自分をすり減らす。",
@@ -590,7 +590,7 @@ const characters = [
         logic: (s) => (s.sacrifice * 4) + (s.depend * 3) + (s.warmth * 3) + (s.empathy * 2)
     },
     {
-        id: "nihiro", name: "にひろ校長", fullname: "にひろ", gender: "Male", group: "依存・演技",
+        id: "nihiro", name: "にひろ校長", fullname: "琶湖 日皓（わこ にひろ）", gender: "Male", group: "依存・演技",
         type_title: "劇場型感情過剰投資", tags:["ENFJ", "EIE", "3w2", "我輩は熊"],
         quote: "落ちたプリン…なんと哀れで美しいのかね！！",
         desc: "プリンを落としただけで全力を投入する劇場型性格。世界は舞台であり、感情は演出のためにある。",
@@ -601,7 +601,7 @@ const characters = [
     // GROUP: 執着
     // ==========================================
     {
-        id: "mai", name: "まい", fullname: "まい", gender: "Female", group: "執着",
+        id: "mai", name: "まい", fullname: "岡田 麻衣（おかだ まい）", gender: "Female", group: "執着",
         type_title: "皮肉観察型（感情＝毒）", tags:["ISTJ", "LSI", "4w5", "嘘好き"],
         quote: "騙されてあげるのって楽しいよね。感情なんて、呪いみたいなものだし。",
         desc: "都合の良い嘘を言い、騙される他者を観察して楽しむ。生を「逃げられない契約」と捉え、弟のリボンに執着する。",
@@ -609,7 +609,7 @@ const characters = [
         logic: (s) => (s.deception * 4) + (s.obsess * 3) + (s.structure_priority * 2) + (s.mask * 2) - (s.trust * 3)
     },
     {
-        id: "maya", name: "まや", fullname: "まや", gender: "Female", group: "執着",
+        id: "maya", name: "まや", fullname: "保福 真夜（ほふく まや）", gender: "Female", group: "執着",
         type_title: "収集固着型", tags:["ISFJ", "ESI", "4w5", "物ヤンデレ"],
         quote: "このリボンは絶対に解かない。…私の記憶は、誰にも奪わせない。",
         desc: "裏切る人間よりも、変わらない「物」や「記憶」に執着する。愛は重く、永遠に劣化しない。",
@@ -617,7 +617,7 @@ const characters = [
         logic: (s) => (s.obsess * 5) + (s.future_fixation * 2) - (s.trust * 2) - (s.mood * 1)
     },
     {
-        id: "nazuna", name: "なずな", fullname: "なずな", gender: "Female", group: "執着",
+        id: "nazuna", name: "なずな", fullname: "伊能 菜樹奈（いのう なずな）", gender: "Female", group: "執着",
         type_title: "ビジョン統制型（支配欲）", tags:["INTJ", "ILI", "5w6", "人形師"],
         quote: "私のお人形になりなさい。悪いようにはしないから。",
         desc: "世界を自分のビジョンに従わせたい。お人形やゴスロリを愛するのは、それらが「完全に制御可能」だから。",
@@ -629,7 +629,7 @@ const characters = [
     // GROUP: デフォルト・その他
     // ==========================================
     {
-        id: "hakomo", name: "はこも", fullname: "はこも", gender: "Male", group: "その他",
+        id: "hakomo", name: "はこも", fullname: "出逢 箱藻（であい はこも）", gender: "Male", group: "その他",
         type_title: "完全空虚型（無関心）", tags: ["INTP", "ILI", "9w8", "自我希薄"],
         quote: "……あ、うん。どっちでもいいよ。",
         desc: "「興味がない」というより「自我の輪郭が薄い」。何が起きても心が動かず、判断を他人に委ねる。",
@@ -637,7 +637,7 @@ const characters = [
         logic: (s) => (s.void * 5) + (s.reality_fatigue * 3) + (s.boredom * 3) - (s.interest * 6)
     },
     {
-        id: "toge", name: "とげ", fullname: "とげ", gender: "Male", group: "その他",
+        id: "toge", name: "とげ", fullname: "細物 杜花（ほそもの とげ）", gender: "Male", group: "その他",
         type_title: "基準安定型（ザ・普通）", tags: ["ISTJ", "LSI", "9w1", "安定志向"],
         quote: "まあ、普通が一番だよ。波風立てずにいこう。",
         desc: "良くも悪くも「普通」。突出した闇も病みもなく、社会の基準に従って安定して生きている。",
@@ -648,6 +648,131 @@ const characters = [
 
 // ■ 質問プール (質問大量追加!!)
 const allQuestions = [
+    {
+        type: "select",
+        text: "Q. 自分自身について、一番「自信がない（疑ってしまう）」部分はどこ？",
+        options:[
+            { text: "自分の『感情』。実は冷めていて、本物じゃない気がする", scores: { self_doubt: 4, fe_awareness: 2, structure_priority: 2, empathy: -2 } }, // LII、INTJ
+            { text: "自分の『存在価値』。誰にも必要とされていない気がして怖い", scores: { self_deny: 4, depend: 3, mood: 2 } }, // INFP、ISFJ
+            { text: "自分の『能力や結果』。もっと完璧にできるはずなのに", scores: { stoicism: 3, pride: 2, ideal: 2 } }, // ENTJ、INTJのぶ
+            { text: "自分の『選択』。別の可能性があったのではと無限に検証してしまう", scores: { alt_path: 4, self_doubt: 3, skepticism: 2 } } // LIIざくろ、INTP
+        ]
+    },
+
+    // 【NEW・改修】不条理に対する感情（LIIとINFPの分離）
+    {
+        type: "select",
+        text: "Q. 自分が全く悪くないのに、理不尽に怒られたり、責任を押し付けられたりしました。",
+        options:[
+            { text: "「私が悪かったのかも…」と感情的に自己否定の沼に落ちて泣く", scores: { self_deny: 4, mood: 3, trauma: 1 } }, // F型（INFP等）
+            { text: "「私のどこに論理的破綻があった？」と自分の行動を無限に検証する", scores: { self_doubt: 3, alt_path: 3, structure_priority: 2, mood: -2 } }, // T型（LII等）
+            { text: "怒りで震える。絶対に許さないし、いつか復讐する", scores: { aggression: 4, obsess: 3, trauma: 2 } }, // みこと等
+            { text: "「ここで反論すると長引く」と計算し、適当に謝って終わらせる", scores: { fe_interface: 3, mask: 3, reality_fatigue: 2 } } // かなた、たもつ
+        ]
+    },
+
+    // 【NEW・改修】システムエラーのメタ視点（F型救済）
+    {
+        type: "select",
+        text: "Q. あなたが「世界を管理するシステム」だとして、1%のノイズ（エラー人間）が発生しました。どう処理する？",
+        options:[
+            { text: "システム崩壊を防ぐため、完璧に排除・削除する", scores: { justice: 3, norm_priority: 3, cleanliness: 2, empathy: -3 } }, // いつき
+            { text: "エラーごと内包できるように、システムの構造を再構築する", scores: { structure_priority: 4, alt_path: 3, creativity: 1 } }, // みづき、りょうご
+            { text: "エラーになった『個』の苦しみを理解し、救済する特別区を作る", scores: { empathy: 4, warmth: 3, ideal: 3, sacrifice: 2 } }, // F型救済！純粋な愛
+            { text: "そもそもシステム自体がバグだらけなので全部シャットダウンする", scores: { void: 4, aggression: 2, reality_fatigue: 2 } } // のりおみ
+        ]
+    },
+
+    // 【NEW・改修】行動原理（F型救済）
+    {
+        type: "select",
+        text: "Q. あなたの「行動原理（生きる理由）」に一番近いものは？",
+        options:[
+            { text: "大切な人を守り、愛を分かち合うこと", scores: { empathy: 4, depend: 3, warmth: 3, sacrifice: 2 } }, // F型救済！
+            { text: "止まったら負け。不完全をなくすために走り続ける", scores: { stoicism: 4, aggression: 2, norm_priority: 1 } }, // あいな等
+            { text: "世界を完全に理解し、自分の理想や美学を形にすること", scores: { structure_priority: 3, ideal: 3, creativity: 3 } }, // みづき、のぶ
+            { text: "面白そうなバグや刺激を探すこと（退屈しのぎ）", scores: { stimulation_need: 4, playfulness: 3, boredom: 2 } } // かいこく、ありす
+        ]
+    },
+
+    // 【NEW】涙の美学（F/T/虚無の分離）
+    {
+        type: "select",
+        text: "Q. あなたが一番「美しい」と思う涙はどれ？",
+        options:[
+            { text: "誰かのために自己犠牲を払って流す涙", scores: { sacrifice: 4, empathy: 3, ideal: 2, warmth: 2 } }, // 純F型
+            { text: "極限の努力と論理的思考の末に、真理にたどり着いた時の涙", scores: { stoicism: 3, structure_priority: 3, ideal: 2 } }, // 純T型・ストイック
+            { text: "理不尽な現実に押しつぶされ、壊れていく瞬間の涙", scores: { obsess: 3, void: 2, observer: 3, trauma: 1 } }, // 観測ヤンデレ・虚無
+            { text: "泣くこと自体が非合理。涙に美しさなどない", scores: { skepticism: 4, structure_priority: 2, warmth: -4, empathy: -3 } } // ドT型
+        ]
+    },
+
+    // 【NEW】情報空白テスト（F型救済）
+    {
+        type: "select",
+        text: "Q. 情報が完全に遮断された、真っ白で無音の空間に閉じ込められました。何をしますか？",
+        options:[
+            { text: "いつ出られるか、どうやって脱出するか構造を考え始める", scores: { alt_path: 4, structure_priority: 3, trauma: -1 } }, // LII
+            { text: "「やっと一人になれた」と安心し、ただ眠る", scores: { reality_fatigue: 4, social_phobia: 3, void: 2 } }, // ILI
+            { text: "孤独に耐えられず「誰か助けて！」と泣き叫ぶ", scores: { depend: 4, social_phobia: -2, mood: 3, empathy: 2 } }, // F型救済（依存）
+            { text: "刺激がなさすぎて発狂しそうになる。壁を殴る", scores: { stimulation_need: 4, boredom: 3, impulsivity: 3 } } // E型
+        ]
+    },
+    {
+        type: "select",
+        text: "Q. 大切な友達とひどい喧嘩をしてしまいました。どうやって仲直りする？",
+        options:[
+            { text: "お互いの感情をぶつけ合って、一緒に思い切り泣く", scores: { mood: 3, empathy: 3, warmth: 2 } }, // わかな、ひより、ゆい
+            { text: "自分の悪かった点を論理的に分析し、改善案を提示する", scores: { structure_priority: 4, norm_priority: 2, empathy: -2 } }, // りょうご、しずか、かほこ
+            { text: "美味しいお菓子を買ってきて、和やかな雰囲気を作る", scores: { fe_awareness: 3, playfulness: 2, mask: 1 } }, // あつし
+            { text: "喧嘩するくらいなら縁を切る。人間関係は面倒くさい", scores: { misanthropy: 4, void: 2, social_phobia: 1 } } // みたろう、れお、まり
+        ]
+    },
+
+    // 【NEW】大切な人の「非合理な選択」への対応
+    {
+        type: "select",
+        text: "Q. 大切な人が、「明らかに失敗する非合理な道」に進もうとしています。",
+        options:[
+            { text: "どんなに地獄でも、最後まで一緒に付き合ってあげる", scores: { sacrifice: 4, depend: 3, empathy: 2 } }, // けいら、ゆな、しのん
+            { text: "データを提示し、いかに間違っているかを論破して止める", scores: { structure_priority: 3, aggression: 2, pride: 1 } }, // ほのか、いつき、こうた
+            { text: "失敗した時のために、こっそり裏で安全な脱出ルートを作っておく", scores: { alt_path: 4, fe_interface: 2, skepticism: 1 } }, // みつき、ありす、かるめ
+            { text: "本人が決めたことなら放置する。失敗の過程を観察する", scores: { observer: 4, meta_view: 2, warmth: -2 } } // きよみ、なみ、かいこく
+        ]
+    },
+
+    // 【NEW】価値を感じるプレゼント
+    {
+        type: "select",
+        text: "Q. 誕生日にプレゼントをもらうなら、どれが一番嬉しい？",
+        options:[
+            { text: "相手が時間をかけて手作りしてくれた、心のこもったもの", scores: { warmth: 3, ideal: 2, empathy: 2 } }, // F型全般（ピュア）
+            { text: "私の欲しいものを完璧にリサーチした、見栄えのいい高価なもの", scores: { approval: 4, pride: 2, mask: 2 } }, // ももい、みりん
+            { text: "機能性とコスパが良い、生活を劇的に効率化するガジェット", scores: { structure_priority: 3, norm_priority: 1, ideal: -2 } }, // T型全般（実質重視）
+            { text: "他人の選んだものに興味はない。現金が一番いい", scores: { void: 3, skepticism: 2, misanthropy: 1 } } // 虚無・冷笑
+        ]
+    },
+
+    // 【NEW】スライダー：世界の解釈
+    {
+        type: "slider",
+        text: "Q. この世界を動かしているのは何だと思いますか？",
+        labels:["【人々の感情と愛】", "【冷酷な物理法則とシステム】"],
+        sliderLogic: (val) => {
+            let s = {};
+            if (val < 30) {
+                // F的解釈
+                s.ideal = 3; s.empathy = 2; s.warmth = 2; s.structure_priority = -2;
+            } else if (val > 70) {
+                // T的解釈
+                s.structure_priority = 4; s.skepticism = 2; s.void = 1; s.empathy = -2;
+            } else {
+                // 迷う・メタ視点
+                s.meta_view = 2; s.self_doubt = 2; s.fe_awareness = 2;
+            }
+            return s;
+        }
+    },
     {
         type: "select",
         text: "Q. 学校や会社など、「明らかに非合理なルール」を押し付けられた時、あなたはどうする？",
@@ -722,19 +847,10 @@ const allQuestions = [
         buttonText: "🔴 絶対に押すな",
         actionLogic: (clicks) => {
             let s = {};
-            if (clicks === 0) { 
-                // 律儀に守る
-                s.norm_priority = 4; s.justice = 2; s.trust = 1; s.control = 2;
-            } else if (clicks === 1) { 
-                // 構造と結果を1回だけ確認する
-                s.skepticism = 3; s.structure_priority = 2; s.observer = 2;
-            } else if (clicks >= 2 && clicks < 10) { 
-                // ちょっと遊んで飽きる
-                s.playfulness = 4; s.stimulation_need = 2; s.boredom = 2; 
-            } else if (clicks >= 10) { 
-                // 狂気の連打（執着と衝動）
-                s.obsess = 4; s.impulsivity = 4; s.void = 2; s.aggression = 2;
-            }
+            if (clicks === 0) { s.norm_priority = 4; s.justice = 2; s.control = 2; } 
+            else if (clicks === 1) { s.skepticism = 3; s.structure_priority = 2; s.observer = 2; } 
+            else if (clicks >= 2 && clicks < 10) { s.playfulness = 4; s.stimulation_need = 3; s.boredom = 2; } 
+            else { s.obsess = 4; s.impulsivity = 4; s.void = 2; s.aggression = 2; }
             return s;
         }
     },
@@ -821,13 +937,12 @@ const allQuestions = [
         type: "select",
         text: "Q. 「絶対に失敗する未来（破滅のシナリオ）」が見えてしまった時、あなたはどうする？",
         options:[
-            { text: "どうせそうなるなら、最初から関わらない（撤退・諦観）", scores: { future_fixation: 4, void: 2, alt_path: -3 } }, // ILIルート（きおか、くう）
-            { text: "破滅を回避するための「代替案」や「構造の変更」を必死に考える", scores: { alt_path: 4, structure_priority: 3, future_fixation: -2 } }, // LIIルート（みつき、ざくろ、みづき）
-            { text: "見なかったことにして、ポジティブに突き進む", scores: { mask: 3, impulsivity: 2, void: -2 } }, // ESFP勢
-            { text: "破滅の過程そのものをデータとして観察して楽しむ", scores: { observer: 4, meta_view: 3, empathy: -4 } } // きよみ、かいこく
+            { text: "どうせそうなるなら、最初から関わらない（撤退・諦観）", scores: { future_fixation: 4, void: 2, alt_path: -3 } },
+            { text: "破滅を回避するための「代替案」や「構造の変更」を必死に考える", scores: { alt_path: 4, structure_priority: 3, future_fixation: -2 } },
+            { text: "見なかったことにして、ポジティブに突き進む", scores: { mask: 3, impulsivity: 2, void: -2 } },
+            { text: "破滅の過程そのものをデータとして観察して楽しむ", scores: { observer: 4, meta_view: 3, empathy: -4 } }
         ]
     },
-
     {
         type: "select",
         text: "Q. 誰かのために、自分が損をする（犠牲になる）ことについてどう思う？",
@@ -866,10 +981,10 @@ const allQuestions = [
         type: "select",
         text: "Q. 目の前で「かわいそうな人（困っている人）」を見たとき、あなたの頭の中で『最初に』起きる思考は？",
         options:[
-            { text: "「助けてあげなきゃ！」と、反射的に心が痛む（純粋な共感）", scores: { empathy: 4, mood: 1 } },
-            { text: "「ここで助けるのが倫理的・社会的な正解だ」と計算する（偽装共感）", scores: { fe_fake: 4, structure: 2, justice: 1 } }, // かなた先生ルート
-            { text: "「なぜその状態に陥ったのか」原因と構造を分析し始める（純粋な分析）", scores: { structure: 4, skepticism: 2, empathy: -2 } }, // りょうごルート
-            { text: "「面倒くさい」と思い、視界に入れないようにする（遮断・虚無）", scores: { misanthropy: 3, void: 2, social_phobia: 1 } }
+            { text: "「助けてあげなきゃ！」と、反射的に心が痛む（純粋な共感）", scores: { empathy: 4, mood: 1, warmth: 3 } },
+            { text: "「ここで助けるのが倫理的・社会的な正解だ」と計算する（偽装共感）", scores: { fe_fake: 4, mask: 2, justice: 1 } },
+            { text: "「なぜその状態に陥ったのか」原因と構造を分析し始める（純粋な分析）", scores: { structure_priority: 4, skepticism: 2, empathy: -3 } },
+            { text: "「面倒くさい」と思い、視界に入れないようにする（遮断・虚無）", scores: { misanthropy: 3, void: 2, reality_fatigue: 2 } }
         ]
     },
 
@@ -896,24 +1011,15 @@ const allQuestions = [
             { text: "描きたい気持ちはあるが、上には上がいると思うと手が止まる", scores: { self_doubt: 3, self_deny: 2, social_phobia: 1 } } // みづき、のぶの裏面
         ]
     },
-
-    // 【NEW】新しい質問形式：究極の二択スライダー
     {
         type: "slider",
         text: "Q. 「正しい冷酷さ」と「間違った優しさ」、あなたが許容できるのはどちら？",
         labels:["【間違った優しさ】", "【正しい冷酷さ】"],
         sliderLogic: (val) => {
             let s = {};
-            if (val < 30) {
-                // 優しさ（F寄り）
-                s.empathy = 3; s.mood = 1;
-            } else if (val > 70) {
-                // 冷酷さ（T/J寄り）
-                s.structure = 3; s.justice = 2; s.stoicism = 1;
-            } else {
-                // 社会的正解で迷う、または自己懐疑
-                s.fe_fake = 2; s.self_doubt = 2;
-            }
+            if (val < 30) { s.empathy = 4; s.mood = 2; s.warmth = 3; } 
+            else if (val > 70) { s.structure_priority = 4; s.justice = 3; s.stoicism = 2; } 
+            else { s.fe_fake = 3; s.self_doubt = 3; } // 社会的正解と自己懐疑の迷い
             return s;
         }
     },
@@ -952,12 +1058,12 @@ const allQuestions = [
     // 【NEW】潔癖・整理整頓
     {
         type: "select",
-        text: "Q. 汚れた机や散らかった部屋を見たとき、どうする？",
+        text: "Q. 汚れた机や散らかった部屋を見るとどう思う？",
         options:[
-            { text: "許せない。菌や汚れは悪だ。すぐに無菌状態にする", scores: { cleanliness: 4, obsess: 2, justice: 1 } }, // じゅん
-            { text: "誰かがやらないといけないから、合理的に片付ける", scores: { cleanliness: 3, structure: 2 } }, // なお
-            { text: "自分の領域さえ無事なら、他がどうなろうと知ったことではない", scores: { void: 2, misanthropy: 2 } }, // 虚無勢
-            { text: "汚れていく過程や、崩壊していく様を観察してみたい", scores: { structure: 2, obsess: 1, deception: 2 } } // きよみ、かいこく
+            { text: "許せない。すぐに掃除・除菌する。", scores: { justice: 2, structure_priority: 1, cleanliness: 4 } },
+            { text: "気にならない（自分のスペースは守る）", scores: { void: 1, interest: -1 } },
+            { text: "誰かが片付けてくれるのを待つ", scores: { depend: 2, mask: 1 } },
+            { text: "汚れていること自体が「生」の証拠", scores: { ideal: 2, observer: 2 } }
         ]
     },
 
@@ -1129,11 +1235,11 @@ const allQuestions = [
     {
         type: "select",
         text: "Q. 相手の言っていることが論理的に間違っていたら？",
-        options: [
-            { text: "「は？間違ってるよ」と即座に論破する", scores: { structure: 2, aggression: 2, mask: 1 } }, // ほのか
-            { text: "面倒だから適当に合わせる", scores: { void: 2, mask: 2 } },
-            { text: "優しく訂正してあげる", scores: { empathy: 2, justice: 1 } },
-            { text: "裏で「馬鹿だな」と見下す", scores: { mask: 2, structure: 1, trust: -1 } }
+        options:[
+            { text: "「は？間違ってるよ」と即座に論破する", scores: { structure_priority: 2, aggression: 2, pride: 3 } },
+            { text: "面倒だから適当に合わせる", scores: { void: 2, mask: 2, reality_fatigue: 1 } },
+            { text: "優しく訂正してあげる", scores: { empathy: 2, justice: 1, warmth: 2 } },
+            { text: "裏で「馬鹿だな」と見下す", scores: { mask: 2, meta_view: 2, trust: -2 } }
         ]
     },
     {
@@ -1299,24 +1405,12 @@ const allQuestions = [
         text: "Q. 【制限時間10秒】この世で一番「無駄」だと思うものは？",
         keywordLogic: (text) => {
             let s = {};
-            // ★NEW! 見栄・ブランド・非合理な支出への嫌悪（みつきのスタバ理論）
-            if (text.match(/スタバ|ブランド|見栄|浪費|贅沢|コスパ|高い|お金|流行/)) { 
-                s.structure_priority = 4; // 合理性・構造重視
-                s.skepticism = 2; // 価値への疑い
-                s.mask = -3; // 演技・見栄を嫌う
-                s.approval = -4; // 承認欲求の否定
-            }
-            // 感情・人間関係の拒絶
+            if (text.match(/スタバ|ブランド|見栄|浪費|贅沢|コスパ|高い|お金|流行/)) { s.structure_priority = 4; s.skepticism = 2; s.mask = -3; s.approval = -4; }
             if (text.match(/感情|愛|恋|絆|同情|共感/)) { s.structure_priority = 3; s.empathy = -4; s.misanthropy = 2; }
-            // 規範への反抗
             if (text.match(/常識|ルール|校則|法律|普通/)) { s.aggression = 2; s.skepticism = 3; s.norm_priority = -3; }
-            // コミュニケーション・社会への疲労
-            if (text.match(/面接|会議|会話|雑談|人間関係|忖度|愛想/)) { s.reality_fatigue = 4; s.social_phobia = 3; s.fe_fake = -2; }
-            // 自己否定・虚無
+            if (text.match(/面接|会議|会話|雑談|人間関係|忖度|愛想|学校|労働|仕事/)) { s.reality_fatigue = 4; s.social_phobia = 3; s.fe_fake = -2; }
             if (text.match(/自分|私|人生|命|生きる/)) { s.void = 4; s.self_deny = 4; s.future_fixation = 2; }
-            // 無駄はない（肯定派）
             if (text.match(/ない|無し|なし|無い|全て意味がある/)) { s.ideal = 3; s.trust = 2; s.void = -3; }
-            // 迷う・適当
             if (text.trim() === "") { s.self_doubt = 3; s.interest = -3; }
             return s;
         }
@@ -1325,10 +1419,10 @@ const allQuestions = [
         type: "select",
         text: "Q. 「700円のオシャレなカフェの飲み物」と「200円のファストフードのシェイク」。あなたはどう考える？",
         options:[
-            { text: "成分と原価を考えれば200円一択。ブランド代・場所代は無駄だ", scores: { structure_priority: 4, skepticism: 3, approval: -3 } }, // LII, ILI (みつきルート)
-            { text: "空間の雰囲気や、そこで過ごす体験には500円の差額以上の価値がある", scores: { ideal: 2, mask: 2, fe_awareness: 1 } }, // EIE, IEE
-            { text: "SNSに載せたいから、高くてもオシャレな方を買う", scores: { approval: 4, mask: 3, structure_priority: -2 } }, // 承認欲求モンスター（ももい、みりん）
-            { text: "そもそも甘い飲み物に興味がない。水で十分だ", scores: { stoicism: 3, void: 1, interest: -2 } } // ストイック・虚無（のぶ、みたろう）
+            { text: "成分と原価を考えれば200円一択。ブランド代・場所代は無駄だ", scores: { structure_priority: 4, skepticism: 3, approval: -3 } },
+            { text: "空間の雰囲気や、そこで過ごす体験には500円の差額以上の価値がある", scores: { ideal: 3, fe_awareness: 2, warmth: 2 } },
+            { text: "SNSに載せたいから、高くてもオシャレな方を買う", scores: { approval: 4, mask: 3, structure_priority: -2 } },
+            { text: "そもそも甘い飲み物に興味がない。水で十分だ", scores: { stoicism: 3, void: 2, interest: -3 } }
         ]
     },
 
@@ -1337,10 +1431,10 @@ const allQuestions = [
         type: "select",
         text: "Q. どちらの人生を選びますか？",
         options:[
-            { text: "誰にも知られず、孤独に世界を救って死ぬ", scores: { sacrifice: 4, ideal: 3, approval: -4, misanthropy: 1 } }, // けいら、しのん
-            { text: "世界を破滅させるが、永遠に英雄として称賛される", scores: { approval: 4, deception: 3, aggression: 2, void: 2 } }, // えんや、みりん、あずり
-            { text: "そんな極端な二択を設定するシステムそのものを疑う", scores: { meta_view: 4, alt_path: 3, skepticism: 3 } }, // みつき、あいら、なみ
-            { text: "どちらでもいい。早く家に帰って寝たい", scores: { reality_fatigue: 4, boredom: 3, void: 2 } } // ありす、あめり
+            { text: "誰にも知られず、孤独に世界を救って死ぬ", scores: { sacrifice: 4, ideal: 3, approval: -4, misanthropy: 1 } },
+            { text: "世界を破滅させるが、永遠に英雄として称賛される", scores: { approval: 4, deception: 3, aggression: 2, void: 2 } },
+            { text: "そんな極端な二択を設定するシステムそのものを疑う", scores: { meta_view: 4, alt_path: 3, skepticism: 3 } },
+            { text: "どちらでもいい。早く家に帰って寝たい", scores: { reality_fatigue: 4, boredom: 3, void: 2 } }
         ]
     },
 
@@ -1351,16 +1445,9 @@ const allQuestions = [
         labels:["【即座にやめて別のことをする】", "【意地でも最後までコンプリートする】"],
         sliderLogic: (val) => {
             let s = {};
-            if (val < 30) {
-                // 合理的撤退・見切りが早い
-                s.structure_priority = 2; s.impulsivity = 2; s.future_fixation = -2;
-            } else if (val > 70) {
-                // サンクコストの呪縛・執着
-                s.obsess = 4; s.stoicism = 2; s.alt_path = -2;
-            } else {
-                // やめるべきか悩んでダラダラ続ける
-                s.reality_fatigue = 2; s.self_doubt = 2; s.boredom = 2;
-            }
+            if (val < 30) { s.structure_priority = 3; s.impulsivity = 2; s.future_fixation = -2; } 
+            else if (val > 70) { s.obsess = 4; s.stoicism = 3; s.alt_path = -3; } 
+            else { s.reality_fatigue = 2; s.self_doubt = 3; s.boredom = 2; }
             return s;
         }
     },
@@ -1369,24 +1456,13 @@ const allQuestions = [
         text: "Q. 【制限時間10秒】「世界」とは？（直感で浮かんだ言葉を）",
         keywordLogic: (text) => {
             let s = {};
-            // ★NEW! 構造・メタ視点（みつき・ありす・りょうご系）
-            if (text.match(/多層構造|単層構造|マトリックス|シミュレーション|法則|データ|情報/)) { 
-                s.structure_priority = 4; s.meta_view = 3; s.observer = 2; 
-            }
-            // ★NEW! 不条理・現実疲労（みひ・あめり系）
-            if (text.match(/理不尽|不平等|ノイズ|バグ|クソ/)) { 
-                s.skepticism = 3; s.reality_fatigue = 3; s.aggression = 1; 
-            }
-            // ★NEW! 表現・芸術の場（のぶ・みづき系）
-            if (text.match(/キャンバス|画用紙|素材|舞台|表現/)) { 
-                s.creativity = 4; s.ideal = 2; s.playfulness = 1; 
-            }
-            // 既存の判定
+            if (text.match(/多層構造|単層構造|マトリックス|シミュレーション|法則|データ|情報/)) { s.structure_priority = 4; s.meta_view = 3; s.observer = 2; }
+            if (text.match(/理不尽|不平等|ノイズ|バグ|クソ/)) { s.skepticism = 3; s.reality_fatigue = 3; s.aggression = 1; }
+            if (text.match(/キャンバス|画用紙|素材|舞台|表現/)) { s.creativity = 4; s.ideal = 2; s.playfulness = 1; }
             if (text.match(/敵|戦場|地獄|檻/)) { s.trauma = 3; s.trust = -3; }
-            if (text.match(/実験|箱庭|システム/)) { s.structure = 3; s.skepticism = 2; }
+            if (text.match(/実験|箱庭|システム/)) { s.structure_priority = 3; s.skepticism = 2; }
             if (text.match(/暇|退屈|クソゲー/)) { s.boredom = 4; s.interest = -1; }
-            if (text.match(/美しい|希望/)) { s.ideal = 3; s.mood = 1; }
-            // 適当・空白
+            if (text.match(/美しい|希望/)) { s.ideal = 3; s.mood = 1; s.warmth = 2; }
             if (text.trim() === "" || text.match(/^[0-9a-zA-Z]+$/)) { s.void = 2; s.boredom = 1; s.interest = -2; }
             return s;
         }
