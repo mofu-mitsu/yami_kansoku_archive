@@ -854,7 +854,255 @@ const allQuestions = [
             return s;
         }
     },
+// ==========================================
+    // 🎮 心理実験：ミニゲーム系ギミック
+    // ==========================================
+// ==========================================
+    // 🎮 狂気のミニゲーム（追加分）
+    // ==========================================
+// 【NEW】トラウマ観測テスト（フラッシュバック回避）
+    {
+        type: "flashback",
+        text: "Q. 【行動観測】\n画面にノイズが走ります。耐えられない場合は、下のボタンを『長押し』して目を逸らしてください。（10秒間で自動終了します）",
+        secretWord: "消えたい 痛い 怖い", // ノイズの中に一瞬混ざる言葉
+        gameLogic: (hideTime) => {
+            let s = {};
+            if (hideTime > 7) {
+                // ほとんど目を逸らしていた＝トラウマ、防衛本能が強い
+                s.trauma = 4; s.self_deny = 2; s.social_phobia = 2;
+            } else if (hideTime > 2) {
+                // 適度に目を逸らした＝正常な不快感
+                s.mood = 2; s.reality_fatigue = 1;
+            } else {
+                // 全く目を逸らさない（直視し続けた）＝虚無、マゾヒズム、観測者
+                s.void = 3; s.observer = 3; s.structure_priority = 1; s.obsess = 2;
+            }
+            return s;
+        }
+    },
+    // 【NEW】忍耐と服従のテスト（待機テスト）
+    {
+        type: "wait",
+        text: "Q. 【行動観測】\n10秒間、何もせずにこの画面で待機すれば『真実』が見えます。\nしかし、下のボタンを押せばすぐに次の質問へ進めます。",
+        gameLogic: (waitTime) => {
+            let s = {};
+            if (waitTime < 2) {
+                // すぐ押す＝衝動性、退屈、権威への反抗
+                s.impulsivity = 4; s.boredom = 3; s.norm_priority = -2; s.aggression = 1;
+            } else if (waitTime >= 2 && waitTime < 9) {
+                // 迷って途中で押す＝自己懐疑、現実疲労
+                s.self_doubt = 4; s.reality_fatigue = 2; s.skepticism = 2;
+            } else {
+                // 10秒律儀に待つ＝克己心、観測者気質、執着
+                s.stoicism = 3; s.observer = 3; s.obsess = 2; s.justice = 1;
+            }
+            return s;
+        }
+    },
+// 【NEW】ゲシュタルト崩壊（T型翻弄テスト）
+    {
+        type: "illusion",
+        text: "Q. 【行動観測】\n以下の文字列から、たった一つだけ存在する「最も正しい文字」をタップしてください。",
+        charTarget: "無", // ここを「愛」とか「無」にしても面白い
+        count: 50, // 画面に敷き詰める数
+        gameLogic: (thinkTime) => {
+            let s = {};
+            if (thinkTime < 3) {
+                // すぐ適当に押す＝虚無、衝動性、関心ゼロ
+                s.void = 3; s.impulsivity = 3; s.interest = -3;
+            } else if (thinkTime >= 3 && thinkTime < 10) {
+                // 普通に探して諦める
+                s.reality_fatigue = 2; s.mask = 1;
+            } else {
+                // 10秒以上「存在しない法則」を探し続ける＝T型の沼（自己懐疑、構造執着）
+                s.self_doubt = 4; s.structure_priority = 4; s.obsess = 2; s.skepticism = 3; s.empathy = -2;
+            }
+            return s;
+        }
+    },
+// 【NEW】ゲシュタルト崩壊（T型翻弄テスト）
+    {
+        type: "illusion",
+        charTarget: "愛", // 探させる文字
+        count: 50, // 画面に敷き詰める数
+        gameLogic: (thinkTime) => {
+            let s = {};
+            if (thinkTime < 3) {
+                // すぐ適当に押す＝虚無、衝動性、関心ゼロ
+                s.void = 3; s.impulsivity = 3; s.interest = -3;
+            } else if (thinkTime >= 3 && thinkTime < 10) {
+                // 普通に探して諦める
+                s.reality_fatigue = 2; s.mask = 1;
+            } else {
+                // 10秒以上「存在しない法則」を探し続ける＝T型の沼
+                s.self_doubt = 4; s.structure_priority = 4; s.obsess = 2; s.skepticism = 3;
+            }
+            return s;
+        }
+    },
+    // 【NEW】ストループテスト（認知不協和テスト）
+    {
+        type: "stroop",
+        fakeWord: "赤", // 表示される文字
+        realColor: "#0000ff", // 実際の色（青）
+        options:[
+            { text: "赤", isCorrect: false, scores: { impulsivity: 4, void: 1 } }, // 文字に釣られる＝衝動性
+            { text: "青", isCorrect: true, scores: { structure_priority: 3, self_doubt: 1, observer: 2 } }, // 正解＝構造理解、自己懐疑（一瞬立ち止まる）
+            { text: "緑", isCorrect: false, scores: { void: 2, interest: -2 } },
+            { text: "黄", isCorrect: false, scores: { void: 2, interest: -2 } }
+        ],
+        gameLogic: (thinkTime, isCorrect) => {
+            let s = {};
+            // 時間がかかって正解＝慎重、自己懐疑
+            if (isCorrect && thinkTime > 3) {
+                s.self_doubt = 3; s.skepticism = 2; s.structure_priority = 2;
+            }
+            // 即答で正解＝メタ視点、情報処理能力が高い
+            else if (isCorrect && thinkTime <= 3) {
+                s.meta_view = 3; s.observer = 2;
+            }
+            return s;
+        }
+    },
+    // 【NEW】執着と衝動のテスト（長押し）
+    {
+        type: "hold",
+        text: "Q. 【行動観測】\n下の赤いボタンを『あなたの気が済むまで』長押ししてください。\n指（マウス）を離すと次の質問へ進みます。",
+        buttonText: "🔴 感情の注入",
+        gameLogic: (holdTime) => {
+            let s = {};
+            if (holdTime < 1) {
+                // 一瞬で離す＝虚無、無関心
+                s.void = 3; s.interest = -3; s.reality_fatigue = 2;
+            } else if (holdTime >= 1 && holdTime < 5) {
+                // 適当なところで離す＝普通、規範
+                s.norm_priority = 3; s.justice = 1;
+            } else if (holdTime >= 5 && holdTime < 15) {
+                // 結構長く押す＝執着、情緒不安定
+                s.obsess = 3; s.mood = 2; s.empathy = 1;
+            } else {
+                // 15秒以上狂気の長押し＝超執着、ストイック、自己否定の裏返し
+                s.obsess = 5; s.stoicism = 4; s.trauma = 2; s.self_deny = 2;
+            }
+            return s;
+        }
+    },
 
+    // ==========================================
+    // 🗣️ 普通だけどメタ視点を問う面白い質問
+    // ==========================================
+
+    // 【NEW】RPGの村人Aのメタ思考
+    {
+        type: "select",
+        text: "Q. あなたはRPGの「村人A」です。勇者が勝手にあなたの家のタンスを開けてアイテムを奪っていきました。どうする？",
+        options:[
+            { text: "システムの仕様（法律）に則り、窃盗罪で衛兵に突き出す", scores: { structure_priority: 3, justice: 3, empathy: -2 } }, // LII, ISTJ
+            { text: "勇者の寝込みを襲って、奪われた倍のアイテムを取り返す", scores: { aggression: 4, impulsivity: 2, norm_priority: -2 } }, // SLE, SEE
+            { text: "泣きついて同情を誘い、勇者のパーティに入れてもらう", scores: { mask: 3, depend: 3, fe_interface: 2 } }, // EIE, IEE
+            { text: "どうせリセットされる世界。NPCとして無反応を貫く", scores: { meta_view: 4, void: 3, reality_fatigue: 2 } } // みつき、ILI、INTP
+        ]
+    },
+
+    // 【NEW】記憶の消去（トラウマ vs 虚無）
+    {
+        type: "select",
+        text: "Q. 神様が「一つだけあなたの記憶を消してあげよう」と言いました。何を消す？",
+        options:[
+            { text: "トラウマになった一番辛い記憶", scores: { trauma: 3, self_deny: 2, mood: 2 } }, // INFP, ISFP
+            { text: "逆に、一番幸せだった楽しかった記憶", scores: { void: 4, reality_fatigue: 3, misanthropy: 1 } }, // 虚無勢、マイナス思考
+            { text: "記憶を消すことによる自己の構造変化を恐れ、拒否する", scores: { structure_priority: 4, stoicism: 2, self_doubt: 2 } }, // INTJ, LII
+            { text: "「神」という非合理な存在の記憶そのものを消す", scores: { skepticism: 4, meta_view: 3, justice: -2 } } // 究極のメタ（みつき等）
+        ]
+    },
+
+    // 【NEW】究極の二択ボタン
+    {
+        type: "select",
+        text: "Q. 目の前に『押せば世界が滅亡するボタン』と『押せば自分が消滅するボタン』があります。",
+        options:[
+            { text: "迷わず世界を滅亡させる", scores: { misanthropy: 4, aggression: 3, void: 2 } }, // みこと、あずり
+            { text: "自己犠牲として、自分が消滅するボタンを押す", scores: { sacrifice: 4, self_deny: 3, empathy: 2 } }, // けいら、しのん
+            { text: "配線を分解して、両方のボタンを無効化（または両方押せるように）する", scores: { alt_path: 4, structure_priority: 3, playfulness: 2 } }, // 代替案（LII/ENTP）
+            { text: "どちらも押さずに家に帰って寝る", scores: { reality_fatigue: 4, boredom: 3, void: 2 } } // ありす、あめり
+        ]
+    },
+    // 【GAME 1】言霊消去ゲーム
+    {
+        type: "word_eraser",
+        text: "Q. 【制限時間10秒】画面に浮かぶ『嫌な言葉』をタップして消してください。",
+        words:[
+            { text: "頑張って", tag: "pressure" },
+            { text: "笑って", tag: "fe" },
+            { text: "空気読んで", tag: "fe" },
+            { text: "普通にして", tag: "norm" },
+            { text: "期待してるよ", tag: "pressure" },
+            { text: "もっと優しく", tag: "fe" },
+            { text: "常識でしょ", tag: "norm" },
+            { text: "愛してる", tag: "love" },
+            { text: "可哀想に", tag: "pity" }
+        ],
+        gameLogic: (erasedWords) => {
+            let s = {};
+            const total = erasedWords.length;
+            
+            if (total === 0) {
+                // 何も消さない＝無関心、虚無
+                s.void = 4; s.interest = -4; s.reality_fatigue = 2;
+            } else if (total > 7) {
+                // ほぼ全部消す＝ひよりちゃん（消去願望）、攻撃性
+                s.void = 3; s.aggression = 2; s.self_deny = 2; s.obsess = 1;
+            } else {
+                // 選んで消している
+                const feCount = erasedWords.filter(w => w.tag === 'fe').length;
+                const normCount = erasedWords.filter(w => w.tag === 'norm').length;
+                
+                if (feCount >= 2) {
+                    // 「笑って」「空気読んで」を優先して消す＝LII、INTJ的（Fe拒絶）
+                    s.structure_priority = 3; s.social_phobia = 2; s.self_doubt = 1; s.empathy = -2;
+                }
+                if (normCount >= 2) {
+                    // 「普通」「常識」を消す＝反骨（なぎさ、ほのか）
+                    s.aggression = 2; s.ideal = 2; s.norm_priority = -3;
+                }
+            }
+            return s;
+        }
+    },
+
+    // 【GAME 2】ノイズ拭き取り（潔癖 vs 合理 vs 虚無）
+    {
+        type: "scratch",
+        text: "Q. 【制限時間10秒】画面が汚れています。指（マウス）で擦って拭き取ってください。",
+        secretText: "真理",
+        gameLogic: (clearedPercent) => {
+            let s = {};
+            if (clearedPercent < 5) {
+                // 拭かない＝虚無、はこも、みたろう
+                s.void = 4; s.boredom = 3; s.cleanliness = -3;
+            } else if (clearedPercent >= 5 && clearedPercent < 40) {
+                // 文字が見える部分だけ拭く＝LII・INTJ（効率・構造優先）
+                s.structure_priority = 4; s.skepticism = 2; s.cleanliness = -1;
+            } else if (clearedPercent > 80) {
+                // 全部綺麗にする＝じゅん・なお（潔癖・完璧主義）
+                s.cleanliness = 4; s.justice = 2; s.obsess = 2; s.norm_priority = 2;
+            } else {
+                s.interest = 1; // 普通
+            }
+            return s;
+        }
+    },
+
+    // 【GAME 3】逃げる選択肢（依存の放棄）
+    {
+        type: "catch_button",
+        text: "Q. 本当に辛くて限界の時、あなたはどうしますか？",
+        options:[
+            { text: "一人で耐えて解決策を探す", scores: { structure_priority: 3, self_deny: 2, depend: -3 }, isEvasive: false },
+            { text: "すべてを投げ出して逃げる", scores: { void: 3, reality_fatigue: 3, stoicism: -2 }, isEvasive: false },
+            { text: "誰かに助けを求める", scores: { depend: 5, mood: 2, obsess: 2 }, isEvasive: true } // ★これが逃げる！
+        ]
+    },
     // 【NEW】情報空白テスト（Ni vs Ne）
     {
         type: "select",
@@ -1462,7 +1710,7 @@ const allQuestions = [
             if (text.match(/敵|戦場|地獄|檻/)) { s.trauma = 3; s.trust = -3; }
             if (text.match(/実験|箱庭|システム/)) { s.structure_priority = 3; s.skepticism = 2; }
             if (text.match(/暇|退屈|クソゲー/)) { s.boredom = 4; s.interest = -1; }
-            if (text.match(/美しい|希望/)) { s.ideal = 3; s.mood = 1; s.warmth = 2; }
+            if (text.match(/愛|美しい|希望/)) { s.ideal = 3; s.mood = 1; s.warmth = 2; }
             if (text.trim() === "" || text.match(/^[0-9a-zA-Z]+$/)) { s.void = 2; s.boredom = 1; s.interest = -2; }
             return s;
         }
