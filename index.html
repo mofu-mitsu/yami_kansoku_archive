@@ -29,6 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -85,17 +86,18 @@
         </section>
 
         <!-- 結果画面 -->
+<!-- 結果画面 -->
         <section id="result-screen" class="screen">
             <div class="result-header">
                 <i class="fa-solid fa-clipboard-check"></i> 観測レポート
             </div>
             
-            <div class="result-content">
-                <div class="chara-img-box">
-                    <img id="result-img" src="" alt="Subject Image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <div class="chara-img-placeholder" style="display:none">
-                        <i class="fa-solid fa-user-secret" style="font-size: 3rem; color: #555;"></i>
-                    </div>
+            <!-- ★ 保存する対象のエリア ★ -->
+            <div class="result-content" id="capture-area">
+                
+                <!-- ★ アイコン2段バグ修正：ここをスッキリさせたよ！ ★ -->
+                <div class="chara-img-box" id="result-img-box">
+                    <i class="fa-solid fa-user-secret dummy-icon" id="dummy-icon"></i>
                 </div>
 
                 <h2 id="result-type-name">タイプ名</h2>
@@ -105,7 +107,6 @@
                     <i class="fa-solid fa-quote-right"></i>
                 </div>
                 
-                <!-- パラメーター -->
                 <div class="radar-box" id="stats-list"></div>
 
                 <div class="description-box">
@@ -119,13 +120,13 @@
             </div>
 
             <div class="action-buttons">
-                <!-- シェアアイコン変更 -->
-                <button class="btn share-btn" onclick="shareResult()"><i class="fa-solid fa-share-nodes"></i> 結果をシェア</button>
+                <!-- ★ 画像保存ボタン ★ -->
+                <button class="btn save-btn" onclick="saveResultImage()" style="border-color: #ff00ff; color: #ff00ff;"><i class="fa-solid fa-download"></i> 結果を画像保存</button>
+                <button class="btn share-btn" onclick="shareResult()"><i class="fa-solid fa-share-nodes"></i> URLをシェア</button>
                 <button class="btn retry-btn" onclick="location.reload()">再観測 <i class="fa-solid fa-rotate-right"></i></button>
                 <button class="btn sub-btn" onclick="showArchive('result-screen')">全検体リスト <i class="fa-solid fa-list"></i></button>
             </div>
         </section>
-
         <!-- アーカイブ（一覧）画面 -->
         <section id="archive-screen" class="screen">
             <h2><i class="fa-solid fa-database"></i> 検体アーカイブ</h2>
