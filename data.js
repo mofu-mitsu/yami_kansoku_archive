@@ -518,11 +518,11 @@ const characters = [
         logic: (s) => (s.fe_awareness * 4) + (s.depend * 4) + (s.mask * 3) + (s.approval * 2)
     },
     {
-        id: "gohobi", name: "ご褒美", fullname: "栄城 縫（えいしろ ぬい）", gender: "Male", group: "依存・演技",
+        id: "gohoubi", name: "ご褒美", fullname: "栄城 縫（えいしろ ぬい）", gender: "Male", group: "依存・演技",
         type_title: "自己神話型（英雄的倒錯）", tags:["INFP", "IEI", "4w3", "豚紳士"],
         quote: "罵倒は愛の裏返しだゾ♡ 拙者の出汁は極上だゾッ！",
         desc: "自分自身を物語の主人公（あるいは道化）として演出することで世界と対峙している。",
-        image: "gohobi.png",
+        image: "gohoubi.png",
         logic: (s) => (s.mask * 4) + (s.playfulness * 3) + (s.ideal * 2) + (s.obsess * 2) - (s.self_deny * 3)
     },
     {
