@@ -409,11 +409,11 @@ input[type=range]::-webkit-slider-runnable-track {
     box-shadow: 0 0 10px #00ffcc;
 }
 /* ==========================================
-   🐖 ご褒美観測システム (バグ修正版)
+   🐖 ご褒美観測システム (中央ドーン！追加)
    ========================================== */
 #gohoubi-pig {
     position: fixed;
-    right: -200px; /* 画面外の余裕を増やす */
+    right: -200px;
     font-size: 3rem;
     cursor: pointer;
     z-index: 9999;
@@ -423,17 +423,29 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 .walk-left {
     display: block !important;
-    animation: walkLeft 18s linear forwards; /* 少しゆっくりにして途切れ防止 */
+    animation: walkLeft 18s linear forwards; 
 }
 @keyframes walkLeft {
     0% { right: -200px; transform: scaleX(1); }
-    100% { right: 120vw; transform: scaleX(1); } /* 完全に突き抜ける */
+    100% { right: 120vw; transform: scaleX(1); } 
 }
 
-/* ★ 吹き出しの見切れ防止 ★ */
+/* ★NEW: 30回タップで中央にドーンと出る演出★ */
+.tonkotsu-center {
+    display: block !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 6rem !important; /* 超デカくする */
+    animation: shake 0.5s infinite;
+    z-index: 10000;
+}
+
 .pig-speech {
     position: absolute;
-    bottom: 110%; /* 豚の少し上に配置 */
+    bottom: 110%; 
     left: 50%;
     transform: translateX(-50%);
     background: #fff;
@@ -463,7 +475,10 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 .pig-speech.show { opacity: 1; }
 
-.tonkotsu-mode {
-    font-size: 5rem !important; /* どんぶりなので大きく */
-    animation: shake 0.5s infinite;
+@keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(10deg); }
+    50% { transform: translate(-50%, -50%) rotate(0deg); }
+    75% { transform: translate(-50%, -50%) rotate(-10deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
 }
