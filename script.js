@@ -108,26 +108,22 @@ function generateAbstractArt(containerId) {
     }
 }
 
-// ★ ご褒美（豚）システムの初期化
 function initPigSystem() {
     pigClicks = 0;
     isPigWalking = false;
     
-    if(!document.getElementById('gohoubi-pig')) {
-        pigElement = document.createElement('div');
-        pigElement.id = 'gohoubi-pig';
-        pigElement.innerHTML = `🐖<div class="pig-speech" id="pig-speech"></div>`;
-        document.body.appendChild(pigElement);
-    } else {
-        pigElement = document.getElementById('gohoubi-pig');
-        pigElement.className = '';
-        pigElement.innerHTML = `🐖<div class="pig-speech" id="pig-speech"></div>`;
-    }
+    let existingPig = document.getElementById('gohoubi-pig');
+    if(existingPig) existingPig.remove();
 
-    // ★追加：アニメーションが完全に終わった時の処理
+    pigElement = document.createElement('div');
+    pigElement.id = 'gohoubi-pig';
+    pigElement.innerHTML = `🐖<div class="pig-speech" id="pig-speech"></div>`;
+    document.body.appendChild(pigElement);
+
     pigElement.addEventListener('animationend', () => {
         pigElement.classList.remove('walk-left');
-        isPigWalking = false; // 歩き終わったのでフラグを下ろす
+        pigElement.style.display = 'none'; 
+        isPigWalking = false; 
     });
 
     // 豚のクリックイベント
@@ -140,35 +136,64 @@ function initPigSystem() {
 
         const speech = document.getElementById('pig-speech');
         
-        // ★修正：data.jsのデータを使う
         if (pigClicks === 30) {
+            // ★ 30回目：歩行を強制停止して画面中央にドーン！
+            pigElement.classList.remove('walk-left');
+            isPigWalking = false;
+            pigElement.classList.add('tonkotsu-center');
             pigElement.innerHTML = `🍜<div class="pig-speech show" id="pig-speech">${gohoubiData.secretQuote}</div>`;
-            pigElement.classList.add('tonkotsu-mode');
+            
+            // ★ 4秒後にスッと消える
+            setTimeout(() => {
+                pigElement.classList.remove('tonkotsu-center');
+                pigElement.style.display = 'none';
+                const s = document.getElementById('pig-speech');
+                if(s) s.classList.remove('show');
+            }, 4000);
+
         } else if (pigClicks > 30) {
+            // 30回超え（ラーメン状態で歩いてる時）
             speech.innerText = gohoubiData.exhaustedQuote;
             speech.classList.add('show');
+            pigElement.style.transform = 'scale(0.8)';
+            setTimeout(() => { 
+                pigElement.style.transform = 'scale(1)'; 
+                speech.classList.remove('show');
+            }, 2000);
+
         } else {
+            // 通常の豚状態
             const quotes = gohoubiData.normalQuotes;
             speech.innerText = quotes[Math.floor(Math.random() * quotes.length)];
             speech.classList.add('show');
+            
+            pigElement.style.transform = 'scale(0.8)';
+            setTimeout(() => { 
+                pigElement.style.transform = 'scale(1)'; 
+                speech.classList.remove('show');
+            }, 1500);
         }
-
-        pigElement.style.transform = 'scale(0.8)';
-        setTimeout(() => { 
-            pigElement.style.transform = 'scale(1)'; 
-            if(pigClicks <= 30) speech.classList.remove('show');
-        }, 1500);
     };
 
-    // ランダム出現タイマー（歩いていない時だけ発動）
+    // ランダム出現タイマー
     clearInterval(pigInterval);
     pigInterval = setInterval(() => {
         if(!isPigWalking && Math.random() < 0.4) { 
-            isPigWalking = true; // フラグを立てる
-            pigElement.style.bottom = Math.floor(Math.random() * 50) + 10 + '%';
+            isPigWalking = true; 
+            
+            // ★ 30回を超えていたら、次からはラーメン(🍜)として歩いてくる
+            if (pigClicks >= 30) {
+                pigElement.innerHTML = `🍜<div class="pig-speech" id="pig-speech"></div>`;
+            } else {
+                pigElement.innerHTML = `🐖<div class="pig-speech" id="pig-speech"></div>`;
+            }
+            
+            pigElement.style.bottom = Math.floor(Math.random() * 40) + 15 + '%'; 
+            pigElement.style.display = 'block'; 
+            void pigElement.offsetWidth; 
             pigElement.classList.add('walk-left');
         }
-    }, 5000); // チェック間隔を5秒に変更
+    }, 6000);
 }
 
 function startExperiment() {
@@ -382,26 +407,66 @@ function showResult() {
     });
 }
 
+// --------------------------------------------------
+// ★ 画像保存機能（スマホ対応・ローディング表示追加版） ★
+// --------------------------------------------------
 function saveResultImage() {
     const target = document.getElementById('capture-area');
+    const btn = document.querySelector('.save-btn');
     
-    // エラー原因対策：要素が存在するか確認
     if (!target) {
-        console.error("キャプチャ対象が見つかりません。HTMLに id='capture-area' を設定してください！");
-        alert("画像の生成に失敗しました。");
+        alert("キャプチャ対象が見つかりません。");
         return;
     }
 
+    // スマホは処理に時間がかかるので、ボタンのテキストを変えて無効化する
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 画像生成中...';
+    btn.disabled = true;
+
+    // html2canvasで画像を生成 (CORSエラー回避の設定を追加)
     html2canvas(target, { 
         backgroundColor: '#050505',
-        scale: 2
+        scale: 2, // 高画質化
+        useCORS: true, // 外部アイコンやフォントの読み込みを許可
+        allowTaint: true
     }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'yami_kansoku_result.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+        const imgData = canvas.toDataURL('image/png');
+        
+        // スマホ用に長押し保存を促すモーダル画面を作成
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+        modal.style.zIndex = '10000';
+        modal.style.display = 'flex';
+        modal.style.flexDirection = 'column';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        
+        modal.innerHTML = `
+            <p style="color: #00ffcc; margin-bottom: 15px; font-family: 'Mochiy Pop P One', sans-serif; text-align:center;">
+                画像を長押し（PCは右クリック）して<br>「写真に追加」または「保存」してね！📱
+            </p>
+            <img src="${imgData}" style="max-width: 90%; max-height: 70vh; border: 2px solid #ff0055; border-radius: 10px; box-shadow: 0 0 20px #ff0055; object-fit: contain;">
+            <button class="btn" style="margin-top: 20px; border-color: #00ffcc; color: #00ffcc;" onclick="this.parentElement.remove()">閉じる</button>
+        `;
+        document.body.appendChild(modal);
+
+        // ボタンを元に戻す
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+
     }).catch(err => {
         console.error("画像保存エラー:", err);
+        alert("画像の生成に失敗しました…。\n" + err.message);
+        
+        // エラー時もボタンを元に戻す
+        btn.innerHTML = originalText;
+        btn.disabled = false;
     });
 }
 // シェア機能
