@@ -1,50 +1,19 @@
 /* 
-  深層心理・闇観測実験アーカイブ Logic (Ver.20.0 Gohoubi & Save)
+  深層心理・闇観測実験アーカイブ Logic (Ver.22.0)
 */
 
 const paramNames = {
-    mood: "情緒不安定",
-    structure: "構造理解",
-    mask: "演技・仮面",
-    depend: "依存",
-    void: "虚無・諦観",
-    obsess: "執着",
-    justice: "規範・正義",
-    self_deny: "自己否定",
-    trust: "信頼度",
-    interest: "関心度",
-    empathy: "共感・同調",
-    ideal: "理想・ロマン",
-    aggression: "攻撃性",
-    trauma: "過去の傷",
-    boredom: "退屈・倦怠",
-    skepticism: "懐疑心",
-    creativity: "創造・表現",
-    control: "統制・支配",
-    pride: "プライド・誇り",
-    self_doubt: "自己懐疑(二重否定)", // ★NEW!
-    social_phobia: "対人緊張(コミュ障)", // ★NEW! (みづき、あめり等)
-    fe_interface: "擬態社交(Feツール)" ,  // ★NEW! (あい、きよみ、ありす等)
-    cleanliness: "潔癖・衛生",      // ★NEW! (じゅん、なお)
-    lie_hate: "虚偽嫌悪",           // ★NEW! (こふく、かるめ)
-    deception: "欺瞞・偽悪",        // ★NEW! (まい、すおう)
-    misanthropy: "人間嫌い",         // ★NEW! (みたろう、れお、まり)
-    stoicism: "克己・ストイック",
-    fe_fake: "社会的正解の模倣(防衛用Fe)",
-    approval: "承認欲求・自己顕示", // ★NEW! (ももい、みりん等)
-    sacrifice: "自己犠牲・過剰適応" ,
-    observer: "観測者気質",
-    meta_view: "メタ視点",
-    stimulation_need: "刺激欲求",
-    future_fixation: "未来固定視(Ni固着)", // ILI判定用
-    alt_path: "代替案生成(Ne分岐思考)",   // LII判定用
-    reality_fatigue: "現実疲労",
-    fe_awareness: "感情場認識",
-    structure_priority: "構造優先",
-    norm_priority: "規範優先",
-    playfulness: "遊び心",
-    impulsivity: "衝動性",
-    warmth: "情緒温度"
+    mood: "情緒不安定", structure: "構造理解", mask: "演技・仮面", depend: "依存",
+    void: "虚無・諦観", obsess: "執着", justice: "規範・正義", self_deny: "自己否定",
+    trust: "信頼度", interest: "関心度", empathy: "共感・同調", ideal: "理想・ロマン",
+    aggression: "攻撃性", trauma: "過去の傷", boredom: "退屈・倦怠", skepticism: "懐疑心",
+    creativity: "創造・表現", control: "統制・支配", pride: "プライド・誇り", self_doubt: "自己懐疑(二重否定)", 
+    social_phobia: "対人緊張(コミュ障)", fe_interface: "擬態社交(Feツール)", cleanliness: "潔癖・衛生",
+    lie_hate: "虚偽嫌悪", deception: "欺瞞・偽悪", misanthropy: "人間嫌い", stoicism: "克己・ストイック",
+    fe_fake: "社会的正解の模倣(防衛用Fe)", approval: "承認欲求・自己顕示", sacrifice: "自己犠牲・過剰適応",
+    observer: "観測者気質", meta_view: "メタ視点", stimulation_need: "刺激欲求", future_fixation: "未来固定視(Ni固着)",
+    alt_path: "代替案生成(Ne分岐思考)", reality_fatigue: "現実疲労", fe_awareness: "感情場認識",
+    structure_priority: "構造優先", norm_priority: "規範優先", playfulness: "遊び心", impulsivity: "衝動性", warmth: "情緒温度"
 };
 
 let stats = {};
@@ -56,11 +25,13 @@ let startTime = 0;
 let historyLog =[];
 let previousScreen = 'start-screen';
 
-// ★ご褒美（豚）システム用変数
+// ★観測ログ用変数
+let totalThinkTime = 0; // 総思考時間
+let backCount = 0; // 戻るボタンを押した回数
 let pigClicks = 0;
 let pigInterval;
 let pigElement;
-let isPigWalking = false; // ★追加：歩行中フラグ
+let isPigWalking = false;
 
 function shuffle(array) {
     const newArray = [...array];
@@ -71,7 +42,7 @@ function shuffle(array) {
     return newArray;
 }
 
-// 動的アート生成(Canvas)
+// 動的アート生成
 function generateAbstractArt(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -108,10 +79,10 @@ function generateAbstractArt(containerId) {
     }
 }
 
+// ご褒美（豚）システム
 function initPigSystem() {
     pigClicks = 0;
     isPigWalking = false;
-    
     let existingPig = document.getElementById('gohoubi-pig');
     if(existingPig) existingPig.remove();
 
@@ -126,68 +97,46 @@ function initPigSystem() {
         isPigWalking = false; 
     });
 
-    // 豚のクリックイベント
     pigElement.onclick = () => {
         pigClicks++;
         stats.impulsivity += 1;
         stats.playfulness += 1;
         stats.stimulation_need += 1;
-        stats.alt_path += 0.5; 
 
         const speech = document.getElementById('pig-speech');
         
         if (pigClicks === 30) {
-            // ★ 30回目：歩行を強制停止して画面中央にドーン！
             pigElement.classList.remove('walk-left');
             isPigWalking = false;
             pigElement.classList.add('tonkotsu-center');
             pigElement.innerHTML = `🍜<div class="pig-speech show" id="pig-speech">${gohoubiData.secretQuote}</div>`;
             
-            // ★ 4秒後にスッと消える
             setTimeout(() => {
                 pigElement.classList.remove('tonkotsu-center');
                 pigElement.style.display = 'none';
-                const s = document.getElementById('pig-speech');
-                if(s) s.classList.remove('show');
             }, 4000);
-
         } else if (pigClicks > 30) {
-            // 30回超え（ラーメン状態で歩いてる時）
             speech.innerText = gohoubiData.exhaustedQuote;
             speech.classList.add('show');
             pigElement.style.transform = 'scale(0.8)';
-            setTimeout(() => { 
-                pigElement.style.transform = 'scale(1)'; 
-                speech.classList.remove('show');
-            }, 2000);
-
+            setTimeout(() => { pigElement.style.transform = 'scale(1)'; speech.classList.remove('show'); }, 2000);
         } else {
-            // 通常の豚状態
-            const quotes = gohoubiData.normalQuotes;
-            speech.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+            speech.innerText = gohoubiData.normalQuotes[Math.floor(Math.random() * gohoubiData.normalQuotes.length)];
             speech.classList.add('show');
-            
             pigElement.style.transform = 'scale(0.8)';
-            setTimeout(() => { 
-                pigElement.style.transform = 'scale(1)'; 
-                speech.classList.remove('show');
-            }, 1500);
+            setTimeout(() => { pigElement.style.transform = 'scale(1)'; speech.classList.remove('show'); }, 1500);
         }
     };
 
-    // ランダム出現タイマー
     clearInterval(pigInterval);
     pigInterval = setInterval(() => {
         if(!isPigWalking && Math.random() < 0.4) { 
             isPigWalking = true; 
-            
-            // ★ 30回を超えていたら、次からはラーメン(🍜)として歩いてくる
             if (pigClicks >= 30) {
                 pigElement.innerHTML = `🍜<div class="pig-speech" id="pig-speech"></div>`;
             } else {
                 pigElement.innerHTML = `🐖<div class="pig-speech" id="pig-speech"></div>`;
             }
-            
             pigElement.style.bottom = Math.floor(Math.random() * 40) + 15 + '%'; 
             pigElement.style.display = 'block'; 
             void pigElement.offsetWidth; 
@@ -196,19 +145,32 @@ function initPigSystem() {
     }, 6000);
 }
 
+// ★ ホームボタンの制御
+function handleHomeClick(event) {
+    const quizScreen = document.getElementById('quiz-screen');
+    // 診断中にホームボタンが押されたら、外部サイトに飛ばさず「スタート画面」に戻す
+    if (quizScreen.classList.contains('active')) {
+        event.preventDefault(); // デフォルトのリンク移動をキャンセル
+        if(confirm("診断を中断してタイトルに戻りますか？")) {
+            location.reload(); // リロードして初期化するのが一番安全
+        }
+    }
+    // スタート画面や結果画面の場合は普通にリンク先に飛ぶ（event.preventDefault()しない）
+}
+
 function startExperiment() {
-    currentQuestions = shuffle(allQuestions).slice(0, 20); // 20問出題
+    currentQuestions = shuffle(allQuestions).slice(0, 15); // 質問数（安定化のため15〜20推奨）
     for(let k in stats) stats[k] = 0;
     historyLog =[];
     currentQIndex = 0;
+    totalThinkTime = 0;
+    backCount = 0;
 
     document.getElementById('start-screen').classList.remove('active');
     document.getElementById('archive-screen').classList.remove('active');
     document.getElementById('quiz-screen').classList.add('active');
     
-    // ご褒美観測システム起動
     initPigSystem();
-    
     showQuestion();
 }
 
@@ -260,6 +222,31 @@ function showQuestion() {
         };
         inputArea.appendChild(input);
         inputArea.appendChild(btn);
+    } else if (q.type === 'check') {
+        const container = document.createElement('div');
+        container.className = 'checkbox-group';
+        options.forEach((opt, idx) => {
+            const label = document.createElement('label');
+            label.className = 'checkbox-label';
+            // ★修正：チェックボックスが機能するようにname属性を付与
+            label.innerHTML = `<input type="checkbox" name="q-check" value="${idx}"> ${opt.text}`;
+            container.appendChild(label);
+        });
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.innerText = '決定';
+        btn.onclick = () => {
+            // ★修正：セレクタを正確に指定
+            const checked = container.querySelectorAll('input[type="checkbox"]:checked');
+            let totalScores = {};
+            checked.forEach(chk => {
+                const opt = options[chk.value];
+                for(let k in opt.scores) totalScores[k] = (totalScores[k] || 0) + opt.scores[k];
+            });
+            handleAnswer(totalScores);
+        };
+        inputArea.appendChild(container);
+        inputArea.appendChild(btn);
     } else if (q.type === 'slider') {
         const container = document.createElement('div');
         container.className = 'slider-container';
@@ -281,6 +268,42 @@ function showQuestion() {
         };
         inputArea.appendChild(container);
         inputArea.appendChild(btn);
+    } else if (q.type === 'action') {
+        // 行動観測ボタン
+        const desc = document.createElement('p');
+        desc.innerText = q.instruction;
+        desc.style.fontSize = '0.9rem';
+        desc.style.color = '#aaa';
+        desc.style.marginBottom = '20px';
+        inputArea.appendChild(desc);
+
+        const actionBtn = document.createElement('button');
+        actionBtn.className = 'btn';
+        actionBtn.innerText = q.buttonText;
+        actionBtn.style.background = '#330011';
+        actionBtn.style.color = '#ff0055';
+        actionBtn.style.border = '2px solid #ff0055';
+        actionBtn.style.width = '100%';
+        actionBtn.style.padding = '20px';
+        actionBtn.style.fontSize = '1.5rem';
+        
+        let localClickCount = 0;
+        actionBtn.onclick = () => {
+            localClickCount++;
+            actionBtn.innerText = `WARNING: ${localClickCount}`;
+            actionBtn.style.background = `rgba(255, 0, 85, ${Math.min(localClickCount * 0.1, 1)})`;
+        };
+        inputArea.appendChild(actionBtn);
+
+        const finishBtn = document.createElement('button');
+        finishBtn.className = 'option-btn';
+        finishBtn.innerText = "観測を終了して次へ";
+        finishBtn.style.marginTop = '20px';
+        finishBtn.onclick = () => {
+            const scores = q.actionLogic(localClickCount);
+            handleAnswer(scores);
+        };
+        inputArea.appendChild(finishBtn);
     }
 
     startTime = Date.now();
@@ -299,15 +322,15 @@ function updateTimer() {
 function handleAnswer(scores) {
     clearInterval(timerInterval);
     const timeTaken = (Date.now() - startTime) / 1000;
+    
+    // ログ記録用
+    totalThinkTime += timeTaken;
 
     let timeScores = {};
     if (timeTaken > 6.0) {
-        if (scores.structure > 0) timeScores.structure = 1;
-        if (scores.mood > 0) timeScores.mood = 1;
+        if (scores && scores.structure_priority > 0) timeScores.structure_priority = 1;
         timeScores.self_doubt = 1; 
     } else if (timeTaken < 1.5) {
-        if (scores.mood > 0) timeScores.mood = 2;
-        if (scores.void > 0) timeScores.interest = -2;
         timeScores.impulsivity = 2; 
     }
 
@@ -326,6 +349,10 @@ function handleAnswer(scores) {
 
 function goBack() {
     if (currentQIndex <= 0 || historyLog.length === 0) return;
+    
+    backCount++; // 戻った回数を記録
+    stats.self_doubt += 1; // 戻る＝自己懐疑アップ
+    
     const lastScores = historyLog.pop();
     for (let key in lastScores) {
         if (stats.hasOwnProperty(key)) stats[key] -= lastScores[key];
@@ -335,7 +362,6 @@ function goBack() {
 }
 
 function finishExperiment() {
-    // 豚の観測終了
     clearInterval(pigInterval);
     if(pigElement) pigElement.style.display = 'none';
 
@@ -379,18 +405,18 @@ function showResult() {
     `;
     document.getElementById('match-chara-detail').innerHTML = detailHtml;
 
-    const imgElem = document.getElementById('result-img');
-    const placeholder = document.querySelector('.chara-img-placeholder');
-    
+    // ★ アイコンの表示修正（背景画像にする）
+    const imgBox = document.getElementById('result-img-box');
+    const dummyIcon = document.getElementById('dummy-icon');
     if (bestChar.image) {
-        imgElem.src = "images/" + bestChar.image;
-        imgElem.style.display = 'block';
-        if(placeholder) placeholder.style.display = 'none';
+        imgBox.style.backgroundImage = `url('images/${bestChar.image}')`;
+        dummyIcon.style.display = 'none';
     } else {
-        imgElem.style.display = 'none';
-        if(placeholder) placeholder.style.display = 'flex';
+        imgBox.style.backgroundImage = 'none';
+        dummyIcon.style.display = 'block';
     }
 
+    // パラメータグラフ
     const statsContainer = document.getElementById('stats-list');
     statsContainer.innerHTML = '';
     const sortedKeys = Object.keys(stats).sort((a, b) => Math.abs(stats[b]) - Math.abs(stats[a]));
@@ -405,47 +431,49 @@ function showResult() {
         `;
         statsContainer.appendChild(row);
     });
+
+    // ★ NEW: 観測ログの出力
+    const logList = document.getElementById('hidden-log-list');
+    logList.innerHTML = '';
+    
+    // 思考時間
+    const avgTime = (totalThinkTime / currentQuestions.length).toFixed(1);
+    logList.innerHTML += `<li>平均思考時間: ${avgTime}秒 ${avgTime > 5 ? '(長考/自己懐疑傾向)' : '(即決/直感傾向)'}</li>`;
+    
+    // 修正行動（戻るボタン）
+    logList.innerHTML += `<li>選択の修正回数: ${backCount}回 ${backCount > 2 ? '(強い自己懐疑/Ne代替案)' : ''}</li>`;
+    
+    // ご褒美（豚）タッチ回数
+    logList.innerHTML += `<li>異常対象の接触: ${pigClicks}回 ${pigClicks > 10 ? '(深刻なSe/Ne散漫性)' : ''} ${pigClicks >= 30 ? '🍜 豚骨スープ生成確認' : ''}</li>`;
 }
 
-// --------------------------------------------------
-// ★ 画像保存機能（スマホ対応・ローディング表示追加版） ★
-// --------------------------------------------------
+// ★ 画像保存機能
 function saveResultImage() {
     const target = document.getElementById('capture-area');
     const btn = document.querySelector('.save-btn');
     
-    if (!target) {
-        alert("キャプチャ対象が見つかりません。");
-        return;
-    }
+    if (!target) return;
 
-    // スマホは処理に時間がかかるので、ボタンのテキストを変えて無効化する
     const originalText = btn.innerHTML;
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 画像生成中...';
     btn.disabled = true;
 
-    // html2canvasで画像を生成 (CORSエラー回避の設定を追加)
     html2canvas(target, { 
         backgroundColor: '#050505',
-        scale: 2, // 高画質化
-        useCORS: true, // 外部アイコンやフォントの読み込みを許可
+        scale: 2, 
+        useCORS: true, 
         allowTaint: true
     }).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         
-        // スマホ用に長押し保存を促すモーダル画面を作成
         const modal = document.createElement('div');
         modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '100%';
-        modal.style.height = '100%';
+        modal.style.top = '0'; modal.style.left = '0';
+        modal.style.width = '100%'; modal.style.height = '100%';
         modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
         modal.style.zIndex = '10000';
-        modal.style.display = 'flex';
-        modal.style.flexDirection = 'column';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
+        modal.style.display = 'flex'; modal.style.flexDirection = 'column';
+        modal.style.alignItems = 'center'; modal.style.justifyContent = 'center';
         
         modal.innerHTML = `
             <p style="color: #00ffcc; margin-bottom: 15px; font-family: 'Mochiy Pop P One', sans-serif; text-align:center;">
@@ -456,19 +484,16 @@ function saveResultImage() {
         `;
         document.body.appendChild(modal);
 
-        // ボタンを元に戻す
         btn.innerHTML = originalText;
         btn.disabled = false;
-
     }).catch(err => {
         console.error("画像保存エラー:", err);
-        alert("画像の生成に失敗しました…。\n" + err.message);
-        
-        // エラー時もボタンを元に戻す
+        alert("画像の生成に失敗しました…。");
         btn.innerHTML = originalText;
         btn.disabled = false;
     });
 }
+
 // シェア機能
 function shareResult() {
     if (!finalResultChar) return;
@@ -497,8 +522,11 @@ function showArchive(fromScreen) {
     characters.forEach(char => {
         const item = document.createElement('div');
         item.className = 'archive-item';
+        // ★ アーカイブ画像もダミーにならないように修正
         item.innerHTML = `
-            <div class="archive-icon" style="background-image: url('images/${char.image}'); background-size: cover; background-position: center;"></div>
+            <div class="archive-icon" style="${char.image ? `background-image: url('images/${char.image}');` : `background-color: #333;`} background-size: cover; background-position: center;">
+                ${!char.image ? '<i class="fa-solid fa-user-secret" style="color:#aaa; font-size:1.5rem; display:block; text-align:center; line-height:50px;"></i>' : ''}
+            </div>
             <div class="archive-info">
                 <h4>${char.name}</h4>
                 <p>${char.type_title}</p>
@@ -511,7 +539,12 @@ function showArchive(fromScreen) {
 
 function backFromArchive() {
     document.getElementById('archive-screen').classList.remove('active');
-    document.getElementById(previousScreen).classList.add('active');
+    // ★ 修正：確実に前の画面に戻る
+    if(document.getElementById(previousScreen)) {
+        document.getElementById(previousScreen).classList.add('active');
+    } else {
+        document.getElementById('start-screen').classList.add('active');
+    }
 }
 
 function showArchiveDetail(char) {
@@ -524,8 +557,8 @@ function showArchiveDetail(char) {
     modal.innerHTML = `
         <div class="modal-content">
             <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:2rem; cursor:pointer; color:#fff;">×</span>
-            <div class="chara-img-box" style="margin:0 auto 15px; width:100px; height:100px; border-radius:50%; overflow:hidden; border:2px solid #ff0055;">
-                <img src="images/${char.image}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
+            <div class="chara-img-box" style="margin:0 auto 15px; width:100px; height:100px; border-radius:50%; overflow:hidden; border:2px solid #ff0055; background-image: url('${char.image ? `images/${char.image}` : ''}'); background-size:cover; background-color:#333;">
+               ${!char.image ? '<i class="fa-solid fa-user-secret dummy-icon" style="line-height:100px; font-size:3rem; color:#aaa;"></i>' : ''}
             </div>
             <h3 style="color:#00ffcc; margin:5px 0;">${char.type_title}</h3>
             <h2 style="font-size:2rem; margin:5px 0;">${char.name}</h2>
