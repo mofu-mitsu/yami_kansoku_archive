@@ -252,11 +252,11 @@ const characters = [
         logic: (s) => (s.stoicism * 4) + (s.aggression * 2) + (s.norm_priority * 2)
     },
     {
-        id: "kochan", name: "こう", fullname: "早風 香 （はやかぜ こう）", gender: "Female", group: "規範・秩序",
+        id: "kou", name: "こう", fullname: "早風 香 （はやかぜ こう）", gender: "Female", group: "規範・秩序",
         type_title: "報酬正義型（承認義務化）", tags:["ENFJ", "EIE", "1w2", "理想過剰"],
         quote: "私が正しいと信じた道を行く。だから、信じて欲しい。",
         desc: "真面目でプライドが高く、報われたい思いが強い。後悔を格好悪いとし、世界の方を正そうとする。",
-        image: "kochan.png",
+        image: "kou.png",
         logic: (s) => (s.norm_priority * 3) + (s.ideal * 3) + (s.pride * 2) - (s.self_deny * 2)
     },
 
@@ -304,11 +304,11 @@ const characters = [
         logic: (s) => (s.mask * 3) + (s.approval * 3) + (s.pride * 3) - (s.depend * 3)
     },
     {
-        id: "saichan", name: "さい", fullname: "土倉 彩（つちくら さい）", gender: "Female", group: "攻撃・反抗",
+        id: "sai", name: "さい", fullname: "土倉 彩（つちくら さい）", gender: "Female", group: "攻撃・反抗",
         type_title: "反抗現実型（即時自我）", tags:["ESTP", "SEE", "8w7", "クソ喰らえ"],
         quote: "誰かの正解なんてクソ喰らえ。私は私を貫く。",
         desc: "強気で現実に抗い、自分を貫き通す。頭は悪いかもしれないが、いつでも堂々としている。",
-        image: "saichan.png",
+        image: "sai.png",
         logic: (s) => (s.aggression * 3) + (s.impulsivity * 3) + (s.interest * 2) - (s.norm_priority * 3)
     },
     {
@@ -1561,3 +1561,21 @@ const allQuestions = [
         ]
     }
 ];
+// ==========================================
+// 🐖 ご褒美（豚）システム用セリフデータ
+// ==========================================
+const gohoubiData = {
+    normalQuotes:[
+        "ありがトン♡", 
+        "これはご褒美だゾ♡", 
+        "もっとワシャワシャするゾ！", 
+        "ぶひっ♡", 
+        "効かないゾ！",
+        "ツインテールの女神様…♡",
+        "もっと踏んでほしいゾ！",
+        "我輩の出汁は一級品だゾッ！",
+        "たまんねぇゾ！"
+    ],
+    secretQuote: "拙者の風呂上がりの出汁、豚骨スープ仕立てだゾッ！🍜",
+    exhaustedQuote: "もう出汁は出尽くしたゾ…😇"
+};
