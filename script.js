@@ -845,7 +845,7 @@ function showResult() {
         if (log_flashbackHideTime > 0) logList.innerHTML += `<li>フラッシュバック回避: ${log_flashbackHideTime.toFixed(1)}秒 (トラウマ防衛)</li>`;
     }
 
-    // ====================================================
+// ====================================================
     // ★ 観測データをGAS(みつきのメール)に裏で送信 ★
     // ====================================================
     const logTexts =[];
@@ -865,28 +865,36 @@ function showResult() {
         hazardLevel: hazardLevel,
         logs: logTexts,
         topStats: topStatsData,
-        detailedAnswers: detailedLogs // ★GASに回答詳細ログを送信
+        detailedAnswers: detailedLogs
     };
 
-    // ★ ここにデプロイし直したGASの新しいURLを貼る！
-    const gasUrl = "https://script.google.com/macros/s/AKfycbyLCLxJeFZfjc-INFm6prIPLVxchHwHeHU-Q4r_oCt4UY8OYTg5YGw0WLWiosgndIJb/exec";
+    // ★ ここに新しく発行したGASのURLを貼る！
+    const gasUrl = "https://script.google.com/macros/s/AKfycbyr7F4qbqdkj6KMF-NLDjnchxEAf0AeyAEvvNYrwqwGAcpFO4Wr2C39lO62B9SToxq2/exec";
 
-    if (gasUrl !== "https://script.google.com/macros/s/AKfycbyLCLxJeFZfjc-INFm6prIPLVxchHwHeHU-Q4r_oCt4UY8OYTg5YGw0WLWiosgndIJb/exec") {
+    if (gasUrl !== "https://script.google.com/macros/s/AKfycbyr7F4qbqdkj6KMF-NLDjnchxEAf0AeyAEvvNYrwqwGAcpFO4Wr2C39lO62B9SToxq2/exec") {
         fetch(gasUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'text/plain' },
-            body: JSON.stringify(payload)
+            headers: { 
+                'Content-Type': 'text/plain' // CORS回避のため必須
+            },
+            body: JSON.stringify(payload),
+            redirect: 'follow' // ★超重要：GASのリダイレクトを追いかける
         })
         .then(response => {
-            console.log("観測データ送信完了:", response);
-            alert("【DEBUG】GASへの送信成功！");
+            if (!response.ok) throw new Error("HTTPステータス異常: " + response.status);
+            return response.text();
+        })
+        .then(text => {
+            console.log("観測データ送信完了:", text);
+            // alert("【DEBUG】データ送信成功！\n" + text); // 成功アラート（本番では消してOK）
         })
         .catch(error => {
             console.error("データ送信エラー:", error);
-            alert("【DEBUG】GAS送信エラー: " + error.message);
+            // 強制的にエラーを画面に出す！！
+            alert("【DEBUGエラー】観測データの送信に失敗しました。\n" + error.message);
         });
     }
-}
+} // ← showResult 関数の終わり
 
 // (saveResultImage, shareResult, showArchive, backFromArchive, showArchiveDetail は前回と同じ)
 function saveResultImage() {
