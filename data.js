@@ -442,7 +442,7 @@ const characters = [
         quote: "見なければ…考えなくて済むのに……。",
         desc: "前髪で顔を隠すのは情報と感情を遮断するため。入ってきたら無限に可能性を想像してしまい、永遠と後悔する。",
         image: "kyuta.png", 
-        logic: (s) => (s.alt_path * 3) + (s.self_doubt * 4) + (s.self_deny * 3) + (s.social_phobia * 2)
+        logic: (s) => (s.alt_path * 3) + (s.trauma * 1) + (s.self_doubt * 4) + (s.self_deny * 3) + (s.social_phobia * 2)
     },
     {
         id: "hiyori", name: "ひより", fullname: "大竹 日和（おおたけ ひより）", gender: "Female", group: "孤独・諦観",
