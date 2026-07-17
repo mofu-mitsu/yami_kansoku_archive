@@ -12,7 +12,7 @@ const characters = [
     // ==========================================
     {
         id: "noriomi", name: "のりおみ", fullname: "永丘 紀臣（ながおか のりおみ）", gender: "Male", group: "虚無・構造破壊",
-        type_title: "虚無懐疑型（崩壊観測者）", tags:["INTP", "LII", "5w6", "PTSD"],
+        type_title: "虚無懐疑型（崩壊観測者）", tags:["INTJ", "LII", "5w6", "PTSD"],
         quote: "幸福なんて信じてない。…それを否定する自分のこともな。",
         desc: "世界は壊れているという前提で生きる。幸福を信じないが、それを否定する自分の思考すら信用しない究極の二重否定。",
         image: "noriomi.png", 
@@ -333,7 +333,7 @@ const characters = [
     // ==========================================
     {
         id: "kuu", name: "くう", fullname: "中井 空羽（なかい くう）", gender: "Female", group: "孤独・諦観",
-        type_title: "孤高諦観型", tags:["INTJ", "ILI", "5w4", "孤独の王"],
+        type_title: "孤高諦観型", tags:["INTP", "ILI", "5w4", "孤独の王"],
         quote: "どうせ最後は一人になる。なら、最初から馴染まなくていい。",
         desc: "「どうせ馴染めない」と理解して撤退を選んだ。孤独を受け入れ、諦念の中に安らぎを見出す。",
         image: "kuu.png", 
