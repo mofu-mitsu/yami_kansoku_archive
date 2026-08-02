@@ -229,7 +229,7 @@ const characters = [
     },
     {
         id: "chizu", name: "ちず", fullname: "歩行田 地図（かちた ちず）", gender: "Female", group: "規範・秩序",
-        type_title: "実践哲学型（動的正義）", tags:["ENTJ", "LIE", "1w9", "冒険哲学"],
+        type_title: "実践哲学型（動的正義）", tags:["ENTJ", "LII", "1w9", "冒険哲学"],
         quote: "行こう。答えは空を見て、歩きながら考えるものだよ。",
         desc: "正しさを「動的な仮説」と捉える冒険家。迷いも含めて前進材料にする健全さを持つが、孤独も希望も抱える。",
         image: "chizu.png",
@@ -390,7 +390,7 @@ const characters = [
     },
     {
         id: "koyuki", name: "こゆき", fullname: "浦島 小雪（うらしま こゆき）", gender: "Female", group: "孤独・諦観",
-        type_title: "静的諦観型（哲学的孤立）", tags: ["INXP", "4w5", "諦観"],
+        type_title: "静的諦観型（哲学的孤立）", tags: ["INFP", "4w5", "諦観"],
         quote: "誰にも分かってもらえないのは前提だよ。それがなんだって言うの？",
         desc: "社会構造的に孤立は必然だと理解している。悲鳴をあげるわけでもなく、淡々とその事実を受け入れ、冷ややかな視線で社会を皮肉る。",
         image: "koyuki.png",
@@ -398,7 +398,7 @@ const characters = [
     },
     {
         id: "luna", name: "るな", fullname: "槻 琉奈（けやき るな）", gender: "Female", group: "孤独・諦観",
-        type_title: "接触恐怖型（自己隔離防衛）", tags: ["ISFP", "SEI", "6w5", "静電気"],
+        type_title: "接触恐怖型（自己隔離防衛）", tags: ["ISFJ", "ESI", "6w5", "静電気"],
         quote: "触らないで。…傷つけたくないの。",
         desc: "触れること＝傷つけること。静電気体質により、他者との接触を極度に恐れる。強がりは脆さの裏返し。",
         image: "luna.png",
