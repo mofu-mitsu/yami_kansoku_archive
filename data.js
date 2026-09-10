@@ -466,7 +466,7 @@ const characters = [
     },
     {
         id: "miduki", name: "みづき", fullname: "貴虎 深月（きとら みづき）", gender: "Female", group: "理想・内省",
-        type_title: "理想追求型（静謐な観測者）", tags:["INTP", "LII", "5w4", "オリジナリティ"],
+        type_title: "理想追求型（静謐な観測者）", tags:["INTP", "IEI", "5w4", "オリジナリティ"],
         quote: "どうして世界はこうなんだろう？ …私の色は、まだ足りない。",
         desc: "気弱でコミュ障だが、理論的に理想を追求する。世界を静かに観測し「オリジナリティ」を問い続ける。",
         image: "miduki.png", 
